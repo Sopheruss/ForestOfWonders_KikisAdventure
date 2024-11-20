@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var speed = 200 
+@export var speed = 5
 var screen_size 
 
 # Called when the node enters the scene tree for the first time.
@@ -27,3 +27,5 @@ func _process(delta):
 		$AnimatedSprite2D.stop()
 		
 	position += velocity * delta 
+	
+	velocity = move_and_collide(velocity)
