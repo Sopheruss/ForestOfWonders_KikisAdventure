@@ -22,6 +22,10 @@ window/size/viewport_width=780
 window/size/viewport_height=420
 window/stretch/mode="canvas_items"
 
+[dotnet]
+
+project/assembly_name="Eids2024"
+
 [input]
 
 up={
