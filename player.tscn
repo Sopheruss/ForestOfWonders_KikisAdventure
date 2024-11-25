@@ -24,7 +24,7 @@ collision_mask = 3
 script = ExtResource("1_ra6gl")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.1, 0.1)
+scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_xpgxy")
 animation = &"walk"
 
