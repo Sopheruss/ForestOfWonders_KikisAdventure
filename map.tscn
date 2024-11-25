@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=4 uid="uid://j8nrx6qou55l"]
+[gd_scene load_steps=10 format=4 uid="uid://j8nrx6qou55l"]
 
 [ext_resource type="Texture2D" uid="uid://dpxtdip8fkbg8" path="res://asset/GRASS.png" id="1_yi7x8"]
 
@@ -709,6 +709,18 @@ physics_layer_0/collision_layer = 3
 physics_layer_0/collision_mask = 3
 sources/0 = SubResource("TileSetAtlasSource_ydbt6")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ntinq"]
+size = Vector2(1951, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3siig"]
+size = Vector2(20, 1119)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nddkf"]
+size = Vector2(44, 1133)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gw3cd"]
+size = Vector2(1948.5, 45)
+
 [node name="Map" type="Node"]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
@@ -718,7 +730,26 @@ tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAABAAEAAAAAAAA
 tile_set = SubResource("TileSet_0rr82")
 
 [node name="ObjectLayer" type="TileMapLayer" parent="."]
+position = Vector2(-1, 0)
 y_sort_enabled = true
 tile_map_data = PackedByteArray("AAAGAAYAAAAKAAwAAAANAAkAAAAKAAwAAAAPAAMAAAAKAAwAAAAHAAYAAAAKAAwAAAAIAAYAAAAKAAwAAAAJAAYAAAAKAAwAAAAFAAYAAAAKAAwAAAAEAAYAAAAKAAwAAAADAAYAAAAKAAwAAAAJAAUAAAAKAAwAAAAIAAUAAAAKAAwAAAAHAAUAAAAKAAwAAAAGAAUAAAAKAAwAAAAEAAUAAAAKAAwAAAADAAUAAAAKAAwAAAAFAAUAAAAKAAwAAAAJAAQAAAAKAAwAAAAJAAMAAAAKAAwAAAAJAAIAAAAKAAwAAAAJAAcAAAAKAAwAAAAJAAgAAAAKAAwAAAA=")
 tile_set = SubResource("TileSet_kxxa2")
 collision_visibility_mode = 1
+
+[node name="BorderCollision" type="StaticBody2D" parent="."]
+
+[node name="Up" type="CollisionShape2D" parent="BorderCollision"]
+position = Vector2(965.5, 0)
+shape = SubResource("RectangleShape2D_ntinq")
+
+[node name="Left" type="CollisionShape2D" parent="BorderCollision"]
+position = Vector2(0, 549.5)
+shape = SubResource("RectangleShape2D_3siig")
+
+[node name="Right" type="CollisionShape2D" parent="BorderCollision"]
+position = Vector2(1922, 559.5)
+shape = SubResource("RectangleShape2D_nddkf")
+
+[node name="Bottom" type="CollisionShape2D" parent="BorderCollision"]
+position = Vector2(966.75, 1092.5)
+shape = SubResource("RectangleShape2D_gw3cd")

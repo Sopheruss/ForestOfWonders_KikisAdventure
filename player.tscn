@@ -32,3 +32,8 @@ animation = &"walk"
 shape = SubResource("CapsuleShape2D_yittf")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+limit_left = 10
+limit_top = 10
+limit_right = 1900
+limit_bottom = 1070
+editor_draw_limits = true
