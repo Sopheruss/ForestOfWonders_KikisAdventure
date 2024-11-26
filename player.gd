@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var speed = 5
+@export var speed = 150
 var screen_size 
 
 # Called when the node enters the scene tree for the first time.
@@ -28,4 +28,4 @@ func _process(delta):
 		
 	position += velocity * delta 
 	
-	velocity = move_and_collide(velocity)
+	velocity = move_and_slide()
