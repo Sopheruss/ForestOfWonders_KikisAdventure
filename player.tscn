@@ -1,34 +1,39 @@
-[gd_scene load_steps=5 format=3 uid="uid://cwhngeb8vo338"]
+[gd_scene load_steps=6 format=3 uid="uid://cwhngeb8vo338"]
 
-[ext_resource type="Texture2D" uid="uid://ptglbb5aut0g" path="res://icon.svg" id="1_fpw30"]
 [ext_resource type="Script" path="res://player.gd" id="1_ra6gl"]
+[ext_resource type="Texture2D" uid="uid://5pb7y0qmix7x" path="res://asset/Kiki.png" id="2_xjn47"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yj7nh"]
+atlas = ExtResource("2_xjn47")
+region = Rect2(128, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xpgxy"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_fpw30")
+"texture": SubResource("AtlasTexture_yj7nh")
 }],
 "loop": true,
-"name": &"walk",
+"name": &"placeholder",
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yittf"]
-radius = 5.0
-height = 10.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6qrts"]
+size = Vector2(4.61539, 3.82692)
 
 [node name="Player" type="CharacterBody2D"]
+scale = Vector2(1.3, 1.3)
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_ra6gl")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.1, 0.1)
+scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_xpgxy")
-animation = &"walk"
+animation = &"placeholder"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_yittf")
+position = Vector2(0, 7.29808)
+shape = SubResource("RectangleShape2D_6qrts")
 
 [node name="Camera2D" type="Camera2D" parent="."]

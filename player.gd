@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var speed = 150
+@export var speed = 100
 var screen_size 
 
 # Called when the node enters the scene tree for the first time.
