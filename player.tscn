@@ -42,5 +42,5 @@ shape = SubResource("RectangleShape2D_6qrts")
 limit_left = 1
 limit_top = 18
 limit_right = 1343
-limit_bottom = 832
+limit_bottom = 1260
 editor_draw_limits = true
