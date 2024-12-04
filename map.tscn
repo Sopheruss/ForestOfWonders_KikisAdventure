@@ -1,5 +1,6 @@
 [gd_scene load_steps=41 format=4 uid="uid://j8nrx6qou55l"]
 
+
 [ext_resource type="Texture2D" uid="uid://bqg5c03odw7wj" path="res://asset/water.PNG" id="1_3bp8d"]
 [ext_resource type="Texture2D" uid="uid://bw8ska4b7reqe" path="res://asset/fullAssPack/Tileset/Dirt - simplified.png" id="1_bcefj"]
 [ext_resource type="Texture2D" uid="uid://d5wafd8ypfy6" path="res://asset/fullAssPack/Props/Props-All.png" id="1_mocs0"]
@@ -517,3 +518,4 @@ frame_progress = 0.895479
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Campfire"]
 position = Vector2(-0.5, 25.5)
 shape = SubResource("RectangleShape2D_w6ukc")
+

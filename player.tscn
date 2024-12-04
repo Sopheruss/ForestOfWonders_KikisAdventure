@@ -39,8 +39,10 @@ position = Vector2(0, -2)
 shape = SubResource("RectangleShape2D_6qrts")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
 limit_left = 1
 limit_top = 18
 limit_right = 1343
 limit_bottom = 832
+
 editor_draw_limits = true
