@@ -265,6 +265,7 @@ script = ExtResource("1_ra6gl")
 scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_xpgxy")
 animation = &"magic_right"
+frame_progress = 0.323161
 offset = Vector2(0, -31)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
