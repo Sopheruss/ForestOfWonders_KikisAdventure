@@ -702,6 +702,8 @@ tile_map_data = PackedByteArray("AADg//v/AAACAAcAAADg//z/AAACAAgAAADh//v/AAADAAc
 tile_set = SubResource("TileSet_0l1qp")
 
 [node name="Campfire" type="StaticBody2D" parent="."]
+collision_layer = 6
+collision_mask = 5
 script = ExtResource("12_logfa")
 
 [node name="Animation" type="AnimatedSprite2D" parent="Campfire"]
@@ -717,6 +719,7 @@ position = Vector2(-0.5, 25.5)
 shape = SubResource("RectangleShape2D_w6ukc")
 
 [node name="InteractionArea" parent="Campfire" instance=ExtResource("14_ohrfu")]
+collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Campfire/InteractionArea"]
 position = Vector2(-1, 25)
