@@ -12,34 +12,19 @@ func _ready():
 func _process(delta):
 	var velocity = Vector2.ZERO # The player's movement vector.
 	if Input.is_action_pressed("right"):
-		$AnimatedSprite2D.flip_h = false
-		$AnimatedSprite2D.play("walk_right")
 		velocity.x += 1
-		if Input.is_action_pressed("down"):
-			velocity.y += 1
-		else: if Input.is_action_pressed("up"):
-				velocity.y -= 1
-	else: if Input.is_action_pressed("left"):
-		$AnimatedSprite2D.flip_h = true
-		$AnimatedSprite2D.play("walk_right")
+	if Input.is_action_pressed("left"):
 		velocity.x -= 1
-		if Input.is_action_pressed("down"):
-			velocity.y += 1
-		else: if Input.is_action_pressed("up"):
-				velocity.y -= 1
-	else: if Input.is_action_pressed("down"):
-		$AnimatedSprite2D.play("walk_front")
+	if Input.is_action_pressed("down"):
 		velocity.y += 1
-	else: if Input.is_action_pressed("up"):
-		$AnimatedSprite2D.play("walk_back")
+	if Input.is_action_pressed("up"):
 		velocity.y -= 1
-	
 		
 	if velocity.length() > 0: 
 		velocity = velocity.normalized() * speed
 		$AnimatedSprite2D.play()
 	else: 
-		$AnimatedSprite2D.play("idles_front")
+		$AnimatedSprite2D.stop()
 		
 	position += velocity * delta 
 	
