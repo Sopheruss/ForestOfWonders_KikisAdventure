@@ -26,9 +26,17 @@ func _process(delta):
 	if active_areas.size() > 0 && can_interact:
 		active_areas.sort_custom(_sort_by_distance_to_player)
 		label.text = base_text + active_areas[0].action_name
+		# get scaled size of label
+		var text_rect = label.get_rect()
+		var scaled_width = text_rect.size.x * label.scale.x
+		var scaled_height = text_rect.size.y * label.scale.y
+		
 		label.global_position = active_areas[0].global_position
-		label.global_position.y -= 15
-		label.global_position.x -= label.size.x / 2
+		#label.global_position.y -= 150
+		#label.global_position.x -= label.get_rect().size.x / 2
+		
+		label.global_position.y -= (150 * label.scale.y)  # Adjust Y position with scale
+		label.global_position.x -= (scaled_width + 50 / 2)  # Center horizontally with scale
 		label.show()
 	else: 
 		label.hide()
