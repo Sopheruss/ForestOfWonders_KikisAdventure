@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=4 uid="uid://j8nrx6qou55l"]
+[gd_scene load_steps=48 format=4 uid="uid://j8nrx6qou55l"]
 
 [ext_resource type="Texture2D" uid="uid://bqg5c03odw7wj" path="res://asset/water.PNG" id="1_3bp8d"]
 [ext_resource type="Texture2D" uid="uid://bw8ska4b7reqe" path="res://asset/fullAssPack/Tileset/Dirt - simplified.png" id="1_bcefj"]
@@ -12,6 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://bl017f1oa76g4" path="res://asset/cuteForest.png" id="7_nh1do"]
 [ext_resource type="Texture2D" uid="uid://brdocuoqlvgnd" path="res://asset/fullAssPack/Props/Flower.png" id="9_6fx60"]
 [ext_resource type="Texture2D" uid="uid://xhwu4eyjm5rx" path="res://asset/fullAssPack/Props/Texture.png" id="10_mwj31"]
+[ext_resource type="Script" path="res://campfire.gd" id="12_logfa"]
+[ext_resource type="PackedScene" uid="uid://b1i6pxhkye86b" path="res://interaction/interaction_area/interaction_area.tscn" id="14_ohrfu"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_xyrav"]
 tile_data = PackedInt32Array(0, 262146, 1, 65536, 262146, 2, 131072, 2, 2, 196608, 2, 3)
@@ -626,6 +628,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w6ukc"]
 size = Vector2(15, 11)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_8h8np"]
+radius = 27.54
+
 [node name="Map" type="Node2D"]
 y_sort_enabled = true
 position = Vector2(688, 927)
@@ -697,14 +702,25 @@ tile_map_data = PackedByteArray("AADg//v/AAACAAcAAADg//z/AAACAAgAAADh//v/AAADAAc
 tile_set = SubResource("TileSet_0l1qp")
 
 [node name="Campfire" type="StaticBody2D" parent="."]
+collision_layer = 6
+collision_mask = 5
+script = ExtResource("12_logfa")
 
 [node name="Animation" type="AnimatedSprite2D" parent="Campfire"]
 position = Vector2(0, 16)
 scale = Vector2(0.6, 0.6)
 sprite_frames = SubResource("SpriteFrames_1fn06")
 animation = &"campfire"
-frame_progress = 0.895479
+frame = 1
+frame_progress = 0.711467
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Campfire"]
 position = Vector2(-0.5, 25.5)
 shape = SubResource("RectangleShape2D_w6ukc")
+
+[node name="InteractionArea" parent="Campfire" instance=ExtResource("14_ohrfu")]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Campfire/InteractionArea"]
+position = Vector2(-1, 25)
+shape = SubResource("CircleShape2D_8h8np")
