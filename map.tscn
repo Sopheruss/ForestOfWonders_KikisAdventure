@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bkx70rvotqjeg" path="res://asset/fullAssPack/Tileset/Spring - simplified.png" id="3_d3h53"]
 [ext_resource type="Texture2D" uid="uid://78x3m0ffdbjf" path="res://asset/fullAssPack/Tileset/Tufts and Lumps.png" id="4_st6y3"]
 [ext_resource type="Texture2D" uid="uid://nljld2dto8oj" path="res://asset/fullAssPack/Props/Tree.png" id="5_1epf7"]
-[ext_resource type="PackedScene" uid="uid://dt2yfk51rpcbr" path="res://sampleTree.tscn" id="6_kyfo4"]
+[ext_resource type="PackedScene" uid="uid://dt2yfk51rpcbr" path="res://interactable_map/sampleTree.tscn" id="6_kyfo4"]
 [ext_resource type="Texture2D" uid="uid://6hw60g27v5g" path="res://asset/fullAssPack/Props/Stone and Rock.png" id="6_ljode"]
 [ext_resource type="Texture2D" uid="uid://bl017f1oa76g4" path="res://asset/cuteForest.png" id="7_nh1do"]
 [ext_resource type="Texture2D" uid="uid://brdocuoqlvgnd" path="res://asset/fullAssPack/Props/Flower.png" id="9_6fx60"]

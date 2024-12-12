@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://dt2yfk51rpcbr"]
 
-[ext_resource type="Script" path="res://sample_tree.gd" id="1_lgktg"]
+[ext_resource type="Script" path="res://interactable_map/sample_tree.gd" id="1_lgktg"]
 [ext_resource type="Texture2D" uid="uid://nljld2dto8oj" path="res://asset/fullAssPack/Props/Tree.png" id="2_cqwyh"]
 [ext_resource type="PackedScene" uid="uid://b1i6pxhkye86b" path="res://interaction/interaction_area/interaction_area.tscn" id="3_msucw"]
 
