@@ -9,7 +9,7 @@ atlas = ExtResource("2_j352p")
 region = Rect2(33, 7, 30, 21)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_00l6a"]
-size = Vector2(11, 6)
+size = Vector2(24, 13)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fu26v"]
 radius = 27.54
@@ -30,12 +30,13 @@ texture = SubResource("AtlasTexture_qk4us")
 offset = Vector2(0, -15)
 
 [node name="CollisionShape" type="CollisionShape2D" parent="sampleStone"]
-position = Vector2(2.5, 15)
+position = Vector2(3, 5.5)
 shape = SubResource("RectangleShape2D_00l6a")
 
 [node name="InteractionArea" parent="sampleStone" instance=ExtResource("3_3xm1p")]
 collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="sampleStone/InteractionArea"]
-position = Vector2(-1, 25)
+visible = false
+position = Vector2(2, 1)
 shape = SubResource("CircleShape2D_fu26v")
