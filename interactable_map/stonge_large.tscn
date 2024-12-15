@@ -24,13 +24,13 @@ collision_mask = 5
 script = ExtResource("1_fe8ws")
 
 [node name="sprite" type="Sprite2D" parent="sampleStone"]
-position = Vector2(2.7, 14.3221)
-scale = Vector2(0.845455, 0.858139)
+position = Vector2(3.50909, 14.4163)
+scale = Vector2(0.899394, 0.87907)
 texture = SubResource("AtlasTexture_qk4us")
 offset = Vector2(0, -15)
 
 [node name="CollisionShape" type="CollisionShape2D" parent="sampleStone"]
-position = Vector2(3, 5.5)
+position = Vector2(4, 5)
 shape = SubResource("RectangleShape2D_00l6a")
 
 [node name="InteractionArea" parent="sampleStone" instance=ExtResource("3_3xm1p")]
