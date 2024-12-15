@@ -35,6 +35,7 @@ shape = SubResource("RectangleShape2D_00l6a")
 
 [node name="InteractionArea" parent="sampleTree" instance=ExtResource("3_sbs5i")]
 collision_layer = 4
+action_name = "chop"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="sampleTree/InteractionArea"]
 visible = false

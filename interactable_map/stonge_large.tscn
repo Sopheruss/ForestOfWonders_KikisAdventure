@@ -35,6 +35,7 @@ shape = SubResource("RectangleShape2D_00l6a")
 
 [node name="InteractionArea" parent="sampleStone" instance=ExtResource("3_3xm1p")]
 collision_layer = 4
+action_name = "crush"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="sampleStone/InteractionArea"]
 visible = false
