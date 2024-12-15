@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://dt2yfk51rpcbr"]
+
+[ext_resource type="Script" path="res://interactable_map/tree.gd" id="1_lgktg"]
+[ext_resource type="Texture2D" uid="uid://nljld2dto8oj" path="res://asset/fullAssPack/Props/Tree.png" id="2_cqwyh"]
+[ext_resource type="PackedScene" uid="uid://b1i6pxhkye86b" path="res://interaction/interaction_area/interaction_area.tscn" id="3_msucw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cs7b7"]
+atlas = ExtResource("2_cqwyh")
+region = Rect2(5, 4, 22, 43)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_00l6a"]
+size = Vector2(11, 6)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fu26v"]
+radius = 27.54
+
+[node name="SampleTree" type="Node2D"]
+y_sort_enabled = true
+
+[node name="sampleTree" type="StaticBody2D" parent="."]
+y_sort_enabled = true
+collision_layer = 6
+collision_mask = 5
+script = ExtResource("1_lgktg")
+
+[node name="sprite" type="Sprite2D" parent="sampleTree"]
+position = Vector2(2.7, 14.3221)
+scale = Vector2(0.845455, 0.858139)
+texture = SubResource("AtlasTexture_cs7b7")
+offset = Vector2(0, -15)
+
+[node name="CollisionShape" type="CollisionShape2D" parent="sampleTree"]
+position = Vector2(2.5, 15)
+shape = SubResource("RectangleShape2D_00l6a")
+
+[node name="InteractionArea" parent="sampleTree" instance=ExtResource("3_msucw")]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="sampleTree/InteractionArea"]
+position = Vector2(-1, 25)
+shape = SubResource("CircleShape2D_fu26v")

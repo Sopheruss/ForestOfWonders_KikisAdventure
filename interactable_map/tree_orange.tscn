@@ -1,12 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://dt2yfk51rpcbr"]
+[gd_scene load_steps=7 format=3 uid="uid://n6mysllu0nbm"]
 
-[ext_resource type="Script" path="res://interactable_map/sample_tree.gd" id="1_lgktg"]
-[ext_resource type="Texture2D" uid="uid://nljld2dto8oj" path="res://asset/fullAssPack/Props/Tree.png" id="2_cqwyh"]
-[ext_resource type="PackedScene" uid="uid://b1i6pxhkye86b" path="res://interaction/interaction_area/interaction_area.tscn" id="3_msucw"]
+[ext_resource type="Script" path="res://interactable_map/tree.gd" id="1_42edb"]
+[ext_resource type="Texture2D" uid="uid://nljld2dto8oj" path="res://asset/fullAssPack/Props/Tree.png" id="2_qmdla"]
+[ext_resource type="PackedScene" uid="uid://b1i6pxhkye86b" path="res://interaction/interaction_area/interaction_area.tscn" id="3_c0nqw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cs7b7"]
-atlas = ExtResource("2_cqwyh")
-region = Rect2(101, 4, 22, 43)
+atlas = ExtResource("2_qmdla")
+region = Rect2(69, 4, 22, 43)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_00l6a"]
 size = Vector2(11, 6)
@@ -21,7 +21,7 @@ y_sort_enabled = true
 y_sort_enabled = true
 collision_layer = 6
 collision_mask = 5
-script = ExtResource("1_lgktg")
+script = ExtResource("1_42edb")
 
 [node name="sprite" type="Sprite2D" parent="sampleTree"]
 position = Vector2(2.7, 14.3221)
@@ -33,7 +33,7 @@ offset = Vector2(0, -15)
 position = Vector2(2.5, 15)
 shape = SubResource("RectangleShape2D_00l6a")
 
-[node name="InteractionArea" parent="sampleTree" instance=ExtResource("3_msucw")]
+[node name="InteractionArea" parent="sampleTree" instance=ExtResource("3_c0nqw")]
 collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="sampleTree/InteractionArea"]

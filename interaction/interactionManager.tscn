@@ -17,6 +17,6 @@ offset_bottom = 234.0
 grow_horizontal = 2
 scale = Vector2(0.0631998, 0.0631998)
 theme_override_font_sizes/font_size = 150
-text = "[E] to interact"
+text = "[E] to "
 horizontal_alignment = 1
 vertical_alignment = 1

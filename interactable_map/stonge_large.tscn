@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://snr4w7dpfra7"]
+
+[ext_resource type="Script" path="res://interactable_map/stone.gd" id="1_fe8ws"]
+[ext_resource type="Texture2D" uid="uid://6hw60g27v5g" path="res://asset/fullAssPack/Props/Stone and Rock.png" id="2_j352p"]
+[ext_resource type="PackedScene" uid="uid://b1i6pxhkye86b" path="res://interaction/interaction_area/interaction_area.tscn" id="3_3xm1p"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qk4us"]
+atlas = ExtResource("2_j352p")
+region = Rect2(33, 7, 30, 21)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_00l6a"]
+size = Vector2(11, 6)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fu26v"]
+radius = 27.54
+
+[node name="SampleStone" type="Node2D"]
+y_sort_enabled = true
+
+[node name="sampleStone" type="StaticBody2D" parent="."]
+y_sort_enabled = true
+collision_layer = 6
+collision_mask = 5
+script = ExtResource("1_fe8ws")
+
+[node name="sprite" type="Sprite2D" parent="sampleStone"]
+position = Vector2(2.7, 14.3221)
+scale = Vector2(0.845455, 0.858139)
+texture = SubResource("AtlasTexture_qk4us")
+offset = Vector2(0, -15)
+
+[node name="CollisionShape" type="CollisionShape2D" parent="sampleStone"]
+position = Vector2(2.5, 15)
+shape = SubResource("RectangleShape2D_00l6a")
+
+[node name="InteractionArea" parent="sampleStone" instance=ExtResource("3_3xm1p")]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="sampleStone/InteractionArea"]
+position = Vector2(-1, 25)
+shape = SubResource("CircleShape2D_fu26v")
