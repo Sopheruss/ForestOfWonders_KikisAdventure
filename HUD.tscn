@@ -1,11 +1,72 @@
-[gd_scene format=3 uid="uid://befd823q5nx0y"]
+[gd_scene load_steps=5 format=3 uid="uid://befd823q5nx0y"]
+
+[ext_resource type="Script" path="res://energy_bar.gd" id="1_ndts4"]
+
+[sub_resource type="GDScript" id="GDScript_kxh8k"]
+script/source = "extends CanvasLayer
+
+
+func _on_pause_button_pressed() -> void:
+	print(\"pause pressed\")
+"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tptfk"]
+bg_color = Color(0.533037, 0.533037, 0.533037, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+shadow_color = Color(0, 0, 0, 1)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7jlqn"]
+bg_color = Color(0.176153, 0.57494, 0.708503, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+shadow_color = Color(0, 0, 0, 0.839216)
+anti_aliasing = false
 
 [node name="HUD" type="CanvasLayer"]
+script = SubResource("GDScript_kxh8k")
 
 [node name="Clock" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 23.0
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -52.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = 33.0
+grow_horizontal = 0
+text = "00:00"
 
 [node name="PauseButton" type="Button" parent="."]
-offset_right = 8.0
-offset_bottom = 8.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 42.0
+offset_bottom = 42.0
+text = "||"
+
+[node name="EnergyBar" type="ProgressBar" parent="."]
+offset_left = 53.0
+offset_top = 11.0
+offset_right = 153.0
+offset_bottom = 26.0
+theme_override_styles/background = SubResource("StyleBoxFlat_tptfk")
+theme_override_styles/fill = SubResource("StyleBoxFlat_7jlqn")
+value = 60.0
+show_percentage = false
+script = ExtResource("1_ndts4")
+
+[connection signal="pressed" from="PauseButton" to="." method="_on_pause_button_pressed"]
