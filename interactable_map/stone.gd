@@ -8,7 +8,6 @@ func _ready() -> void:
 	interaction_area.interact = Callable(self, "_sample_Stone")  # Register the interact callback
 
 func _sample_Stone():
-	print("Stone interacted with")
 	sprite.hide()  # Hide the tree's visual sprite
 	collision_shape.disabled = true  # Disable the collision shape
 	interaction_area.queue_free()  # Optionally remove the interaction area

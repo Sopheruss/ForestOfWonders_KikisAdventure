@@ -12,9 +12,7 @@ func _toggle_animation():
 		# Stop the animation
 		animation.stop()
 		is_anim_playing = false
-		print("Animation stopped")
 	else:
 		# Play the animation (replace 'fire' with your actual animation name)
 		animation.play("campfire")
 		is_anim_playing = true
-		print("Animation started")
