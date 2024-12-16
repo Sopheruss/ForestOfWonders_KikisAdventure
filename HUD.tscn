@@ -1,3 +1,11 @@
 [gd_scene format=3 uid="uid://befd823q5nx0y"]
 
-[node name="HUD" type="Node"]
+[node name="HUD" type="CanvasLayer"]
+
+[node name="Clock" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="PauseButton" type="Button" parent="."]
+offset_right = 8.0
+offset_bottom = 8.0
