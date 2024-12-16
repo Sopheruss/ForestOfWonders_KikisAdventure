@@ -1,14 +1,14 @@
 [gd_scene load_steps=4 format=3 uid="uid://dta8nt21g4hh2"]
 
-[ext_resource type="Script" path="res://main.gd" id="1_3tn3q"]
+[ext_resource type="Script" path="res://main.gd" id="1_dgj5q"]
 [ext_resource type="PackedScene" uid="uid://j8nrx6qou55l" path="res://map.tscn" id="2_hvywo"]
 [ext_resource type="PackedScene" uid="uid://cwhngeb8vo338" path="res://player.tscn" id="3_3s42o"]
 
-[node name="Main" type="Node2D"]
+[node name="game" type="Node2D"]
 y_sort_enabled = true
-script = ExtResource("1_3tn3q")
+script = ExtResource("1_dgj5q")
 
 [node name="Map" parent="." instance=ExtResource("2_hvywo")]
 
 [node name="Player" parent="." instance=ExtResource("3_3s42o")]
-position = Vector2(689, 464)
+position = Vector2(700, 892)
