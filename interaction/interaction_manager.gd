@@ -6,15 +6,17 @@ extends Node2D
 const base_text = "[E] to "
 
 var active_areas = [] # hold all interaction areas
+var closest_area = null  # Stores the closest interactable area
 var can_interact = true
 
+const MAX_INTERACTION_DISTANCE = 30.0  # maximum interaction range
+
 func register_area(area: InteractionArea):
-	active_areas.push_back(area)
+	if not active_areas.has(area):
+		active_areas.push_back(area)
 
 func unregister_area(area: InteractionArea):
-	var index = active_areas.find(area)
-	if index != -1:
-		active_areas.remove_at(index) 
+	active_areas.erase(area)
 
 
 func _ready():
@@ -22,37 +24,38 @@ func _ready():
 		player = get_tree().get_first_node_in_group("player")
 	)
 
+# Continuously check for closest area and update the label position
 func _process(delta):
-	if active_areas.size() > 0 && can_interact:
-		active_areas.sort_custom(_sort_by_distance_to_player)
-		label.text = base_text + active_areas[0].action_name
-		# get scaled size of label
-		var text_rect = label.get_rect()
-		var scaled_width = text_rect.size.x * label.scale.x
-		var scaled_height = text_rect.size.y * label.scale.y
+	closest_area = null  # Reset the closest area for this frame
+	
+	if active_areas.size() > 0:
+		# Check each area and find the closest one within range
+		for area in active_areas:
+			var distance_to_player = player.global_position.distance_to(area.global_position)
+			if distance_to_player <= MAX_INTERACTION_DISTANCE:
+				if closest_area == null or distance_to_player < player.global_position.distance_to(closest_area.global_position):
+					closest_area = area
 		
-		label.global_position = active_areas[0].global_position
-		#label.global_position.y -= 150
-		#label.global_position.x -= label.get_rect().size.x / 2
-		
-		label.global_position.y -= (150 * label.scale.y)  # Adjust Y position with scale
-		label.global_position.x -= (scaled_width + 50 / 2)  # Center horizontally with scale
-		label.show()
-	else: 
+		# Show label if a closest area was found
+		if closest_area:
+			label.text = base_text + closest_area.action_name
+			label.global_position = closest_area.global_position
+			label.global_position.y -= (150 * label.scale.y)  # Adjust Y position with scale
+			var text_rect = label.get_rect()
+			label.global_position.x -= (text_rect.size.x * label.scale.x + 50) / 2  # Center horizontally with scale
+			label.show()
+		else:
+			label.hide()
+	else:
 		label.hide()
-		
-func _sort_by_distance_to_player(area1,area2):
-	var area1_to_player = player.global_position.distance_squared_to(area1.global_position)
-	var area2_to_player = player.global_position.distance_squared_to(area2.global_position)
-	return  area1_to_player < area2_to_player
-
 
 func _input(event):
 	if event.is_action_pressed("interact") && can_interact:
-		if active_areas.size() > 0:
+		if closest_area:
 			can_interact = false
 			label.hide()
 			
-			await active_areas[0].interact.call() # .call() to call our callabale like a function
+			# Call the interact function
+			await closest_area.interact.call()
 			
 			can_interact = true
