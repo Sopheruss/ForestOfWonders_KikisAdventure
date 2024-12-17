@@ -9,7 +9,7 @@ var active_areas = [] # hold all interaction areas
 var closest_area = null  # Stores the closest interactable area
 var can_interact = true
 
-const MAX_INTERACTION_DISTANCE = 30.0  # maximum interaction range
+const MAX_INTERACTION_DISTANCE = 30.0 * 30.0  # maximum interaction range (Sqrt)
 
 func register_area(area: InteractionArea):
 	if not active_areas.has(area):
@@ -31,9 +31,9 @@ func _process(delta):
 	if active_areas.size() > 0:
 		# Check each area and find the closest one within range
 		for area in active_areas:
-			var distance_to_player = player.global_position.distance_to(area.global_position)
+			var distance_to_player = player.global_position.distance_squared_to(area.global_position)
 			if distance_to_player <= MAX_INTERACTION_DISTANCE:
-				if closest_area == null or distance_to_player < player.global_position.distance_to(closest_area.global_position):
+				if closest_area == null or distance_to_player < player.global_position.distance_squared_to(closest_area.global_position):
 					closest_area = area
 		
 		# Show label if a closest area was found
