@@ -7,22 +7,10 @@ script/source = "extends CanvasLayer
 
 func _on_pause_button_pressed():
 	print(\"pause pressed\")
-	
 "
 
 [node name="HUD" type="CanvasLayer"]
 script = SubResource("GDScript_kxh8k")
-
-[node name="Clock" type="Label" parent="."]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -52.0
-offset_top = 10.0
-offset_right = -10.0
-offset_bottom = 33.0
-grow_horizontal = 0
-text = "00:00"
 
 [node name="PauseButton" type="Button" parent="."]
 offset_left = 10.0
