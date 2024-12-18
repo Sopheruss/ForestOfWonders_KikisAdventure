@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@onready var energyBar = $HUD/EnergyBar #set parameters for energybar in hud in palyer
+@onready var energyBar = load("res://energyBar.tscn") #set parameters for energybar in hud in palyer
 @export var speed = 100
 var screen_size 
 var energy 
@@ -9,7 +9,9 @@ var energy
 func _ready():
 	energy = 100
 	screen_size = get_viewport_rect().size
-	energyBar.init_energy(energy) #starting with 100 energy
+	
+	# TODO initiate but error message N
+	# energyBar.init_energy(energy) #starting with 100 energy 
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

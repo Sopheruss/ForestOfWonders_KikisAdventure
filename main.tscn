@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dta8nt21g4hh2"]
+[gd_scene load_steps=6 format=3 uid="uid://dta8nt21g4hh2"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_dgj5q"]
 [ext_resource type="PackedScene" uid="uid://j8nrx6qou55l" path="res://map.tscn" id="2_hvywo"]
 [ext_resource type="PackedScene" uid="uid://cwhngeb8vo338" path="res://player.tscn" id="3_3s42o"]
 [ext_resource type="PackedScene" uid="uid://l0el567f4y6f" path="res://MenuStuff/MenuScenes/pause_menu.tscn" id="4_2xamg"]
+[ext_resource type="PackedScene" uid="uid://befd823q5nx0y" path="res://HUD.tscn" id="5_so6f0"]
 
 [node name="game" type="Node2D"]
 y_sort_enabled = true
@@ -12,7 +13,9 @@ script = ExtResource("1_dgj5q")
 [node name="Map" parent="." instance=ExtResource("2_hvywo")]
 
 [node name="Player" parent="." instance=ExtResource("3_3s42o")]
-position = Vector2(700, 892)
+position = Vector2(688, 898)
+
+[node name="HUD" parent="." instance=ExtResource("5_so6f0")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
