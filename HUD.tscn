@@ -2,15 +2,22 @@
 
 [ext_resource type="PackedScene" uid="uid://c5sqpsuk74akv" path="res://energyBar.tscn" id="1_t6s68"]
 
-[sub_resource type="GDScript" id="GDScript_kxh8k"]
+[sub_resource type="GDScript" id="GDScript_2yoa7"]
 script/source = "extends CanvasLayer
 
-func _on_pause_button_pressed():
-	print(\"pause pressed\")
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	print(\"test\")
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
 "
 
 [node name="HUD" type="CanvasLayer"]
-script = SubResource("GDScript_kxh8k")
+script = SubResource("GDScript_2yoa7")
 
 [node name="PauseButton" type="Button" parent="."]
 offset_left = 10.0

@@ -1,17 +1,11 @@
 extends CharacterBody2D
 
-@onready var energyBar = load("res://energyBar.tscn") #set parameters for energybar in hud in palyer
 @export var speed = 100
 var screen_size 
-var energy 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	energy = 100
 	screen_size = get_viewport_rect().size
-	
-	# TODO initiate but error message N
-	# energyBar.init_energy(energy) #starting with 100 energy 
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -50,7 +44,3 @@ func _process(delta):
 	position += velocity * delta 
 	
 	velocity = move_and_slide()
-
-
-func _set_enegry(value): 
-	energyBar.energy = energy
