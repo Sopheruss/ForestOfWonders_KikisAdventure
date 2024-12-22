@@ -1,10 +1,9 @@
-extends ProgressBar
+extends TextureProgressBar
 
 @export var player: Player
 
 func _ready():
 	# connected to player script 
-	# if 
 	player.energyChanged.connect(update)
 	update()
 
