@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 class_name Player # defines class name, that can be used in other scenes? 
 
-signal healthChanged 
+signal energyChanged # to signal change for EnergyBar
 
 @export var maxHealth = 100 
 @onready var currentHealth: int = maxHealth # currentHealth starts same as maxHealth 
@@ -40,7 +40,6 @@ func _process(delta):
 	else: if Input.is_action_pressed("up"):
 		$AnimatedSprite2D.play("walk_back")
 		velocity.y -= 1
-	
 		
 	if velocity.length() > 0: 
 		velocity = velocity.normalized() * speed
@@ -53,10 +52,12 @@ func _process(delta):
 	velocity = move_and_slide()
 
 func pickUpStuffRemoveEnegry():
-	currentHealth -= 5 # picking up stuff costs 5 Energy right now
+	#TODO: add method when stuff picked up and energy must change
+	# Dont understand where to put funtion and how to connect Function of Player to e.g. Treee
 	
-	if currentHealth < 0: #need to check what happens here
-		currentHealth = maxHealth 
+	currentHealth -= 1 # sets how much energy is used 
+	
+	if currentHealth < 0: # check if energy is empty
+		print("healthEmpty") #TODO: change what happens if Energy is empty
 		
-	healthChanged.emit()
-	#TODO: add info when studd picked up and energy must change
+	energyChanged.emit() # signals progressBar in Main, that Energy changed and percentage must be changed

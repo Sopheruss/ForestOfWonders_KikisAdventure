@@ -12,10 +12,8 @@ func _process(delta: float) -> void:
 	if $PauseMenu.get_tree().paused == false: 
 		$PauseMenu.hide()
 
-# makes PauseMenu visible if PauseButton is pressed
 # starts Animation of PauseMenu (see AnimationPlayer/Script in PauseMenu) 
 func _on_pause_button_pressed() -> void:
-	$PauseMenu.show()
 	$PauseMenu.pause()
 "
 

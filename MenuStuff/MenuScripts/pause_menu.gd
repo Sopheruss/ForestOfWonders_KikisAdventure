@@ -8,12 +8,13 @@ func resume():
 	$AnimationPlayer.play_backwards("blur")
 
 func pause(): 
+	show() # make pause menu visible
 	get_tree().paused = true
 	$AnimationPlayer.play("blur")
 
 # checks if esc is pressed -> if so startes PauseMenu
 func testEsc():
-	if (Input.is_action_just_pressed("esc") and get_tree().paused == false):
+	if Input.is_action_just_pressed("esc") and get_tree().paused == false:
 		pause()
 	elif Input.is_action_just_pressed("esc") and get_tree().paused == true:
 		resume()
