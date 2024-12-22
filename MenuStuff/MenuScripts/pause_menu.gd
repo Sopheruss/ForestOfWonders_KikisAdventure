@@ -11,8 +11,9 @@ func pause():
 	get_tree().paused = true
 	$AnimationPlayer.play("blur")
 
+# checks if esc is pressed -> if so startes PauseMenu
 func testEsc():
-	if Input.is_action_just_pressed("esc") and get_tree().paused == false:
+	if (Input.is_action_just_pressed("esc") and get_tree().paused == false):
 		pause()
 	elif Input.is_action_just_pressed("esc") and get_tree().paused == true:
 		resume()
@@ -27,7 +28,7 @@ func _on_options_pressed() -> void:
 	if get_tree().paused == false: 
 		pass 
 	else: 
-		pass #needs to change acoordingly -> open options menu 
+		pass #TODO: needs to change acoordingly -> open options menu 
 
 func _on_quit_pressed() -> void:
 	if get_tree().paused == false: 
@@ -35,5 +36,6 @@ func _on_quit_pressed() -> void:
 	else: 
 		get_tree().quit()
 
+# checks continous if esc is pressed 
 func _process(_delta):
 	testEsc()

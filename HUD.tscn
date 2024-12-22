@@ -1,19 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://befd823q5nx0y"]
+[gd_scene load_steps=4 format=3 uid="uid://befd823q5nx0y"]
 
 [ext_resource type="PackedScene" uid="uid://c5sqpsuk74akv" path="res://energyBar.tscn" id="1_t6s68"]
+[ext_resource type="PackedScene" uid="uid://l0el567f4y6f" path="res://MenuStuff/MenuScenes/pause_menu.tscn" id="2_xp36h"]
 
 [sub_resource type="GDScript" id="GDScript_2yoa7"]
 script/source = "extends CanvasLayer
 
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	print(\"test\")
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+# hides pauseMenu, if it is not needed 
+# allows functionality of pause Button
+# otherwise PauseMenu would overlapp PauseButton and it could not be pressed
 func _process(delta: float) -> void:
-	pass
+	if $PauseMenu.get_tree().paused == false: 
+		$PauseMenu.hide()
+
+# makes PauseMenu visible if PauseButton is pressed
+# starts Animation of PauseMenu (see AnimationPlayer/Script in PauseMenu) 
+func _on_pause_button_pressed() -> void:
+	$PauseMenu.show()
+	$PauseMenu.pause()
 "
 
 [node name="HUD" type="CanvasLayer"]
@@ -31,5 +35,7 @@ offset_left = 108.0
 offset_top = 16.0
 offset_right = 148.0
 offset_bottom = 56.0
+
+[node name="PauseMenu" parent="." instance=ExtResource("2_xp36h")]
 
 [connection signal="pressed" from="PauseButton" to="." method="_on_pause_button_pressed"]
