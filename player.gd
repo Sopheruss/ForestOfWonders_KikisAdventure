@@ -1,5 +1,12 @@
 extends CharacterBody2D
 
+class_name Player # defines class name, that can be used in other scenes? 
+
+signal healthChanged 
+
+@export var maxHealth = 100 
+@onready var currentHealth: int = maxHealth # currentHealth starts same as maxHealth 
+
 @export var speed = 100
 var screen_size 
 
@@ -44,3 +51,12 @@ func _process(delta):
 	position += velocity * delta 
 	
 	velocity = move_and_slide()
+
+func pickUpStuffRemoveEnegry():
+	currentHealth -= 5 # picking up stuff costs 5 Energy right now
+	
+	if currentHealth < 0: #need to check what happens here
+		currentHealth = maxHealth 
+		
+	healthChanged.emit()
+	#TODO: add info when studd picked up and energy must change
