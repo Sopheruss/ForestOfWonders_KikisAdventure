@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://xynwtmd6feox"]
+[gd_scene load_steps=4 format=3 uid="uid://xynwtmd6feox"]
 
+[ext_resource type="Theme" uid="uid://djsqsbsh60m2r" path="res://MenuStuff/game_ui_theme.tres" id="1_iqf1g"]
 [ext_resource type="Script" path="res://MenuStuff/MenuScripts/menu.gd" id="1_jm48f"]
 [ext_resource type="Texture2D" uid="uid://bqg5c03odw7wj" path="res://asset/water.PNG" id="2_08fnr"]
 
@@ -10,6 +11,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_iqf1g")
+theme_type_variation = &"DarkWoodPanel"
 script = ExtResource("1_jm48f")
 
 [node name="Background" type="TextureRect" parent="."]
@@ -21,45 +24,45 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_08fnr")
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_iqf1g")
 
-[node name="PanelContainer" type="PanelContainer" parent="CenterContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 
-[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/PanelContainer"]
+[node name="Start" type="Button" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(100, 29)
 layout_mode = 2
+theme_type_variation = &"GameMenuButton"
+text = "Start"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer"]
+[node name="Options" type="Button" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(100, 29)
 layout_mode = 2
+theme_type_variation = &"GameMenuButton"
+text = "Settings"
 
-[node name="Todo_GameName" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Credits" type="Button" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(100, 29)
 layout_mode = 2
-text = "toDo: GameName"
-horizontal_alignment = 1
+theme_type_variation = &"GameMenuButton"
+text = "Credit"
 
-[node name="Play" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(100, 29)
 layout_mode = 2
-text = "Play"
-
-[node name="Options" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "Options"
-
-[node name="Quit" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
+theme_type_variation = &"GameMenuButton"
 text = "Quit"
 
-[node name="Credits" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "Credits"
-
-[connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]
-[connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
-[connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Start" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
