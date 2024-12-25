@@ -62,7 +62,7 @@ text = "Options"
 custom_minimum_size = Vector2(100, 29)
 layout_mode = 2
 theme_type_variation = &"GameMenuButton"
-text = "Credit"
+text = "Credits"
 
 [node name="Quit" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(100, 29)
