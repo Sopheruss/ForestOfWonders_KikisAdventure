@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=16 format=3 uid="uid://djsqsbsh60m2r"]
+[gd_resource type="Theme" load_steps=18 format=3 uid="uid://djsqsbsh60m2r"]
 
 [ext_resource type="Texture2D" uid="uid://cqlfj3y1xfrn2" path="res://asset/UI/basic_ui.png" id="1_64okf"]
 
@@ -74,6 +74,17 @@ texture_margin_right = 4.0
 texture_margin_bottom = 6.0
 region_rect = Rect2(0, 0, 26, 28)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ltbuu"]
+atlas = ExtResource("1_64okf")
+region = Rect2(153, 105, 30, 30)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pd1jk"]
+texture = SubResource("AtlasTexture_ltbuu")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+
 [resource]
 DarkWoodPanel/base_type = &"PanelContainer"
 GameMenuButton/base_type = &"Button"
@@ -82,3 +93,5 @@ GameMenuButton/styles/focus = SubResource("StyleBoxTexture_p7lys")
 GameMenuButton/styles/hover = SubResource("StyleBoxTexture_vjrtb")
 GameMenuButton/styles/normal = SubResource("StyleBoxTexture_4ule2")
 GameMenuButton/styles/pressed = SubResource("StyleBoxTexture_bau03")
+PauseMenuBackground/base_type = &"PanelContainer"
+PauseMenuBackground/styles/panel = SubResource("StyleBoxTexture_pd1jk")

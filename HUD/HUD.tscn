@@ -1,5 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://befd823q5nx0y"]
+[gd_scene load_steps=6 format=3 uid="uid://befd823q5nx0y"]
 
+[ext_resource type="Theme" uid="uid://djsqsbsh60m2r" path="res://MenuStuff/game_ui_theme.tres" id="1_niywp"]
+[ext_resource type="Texture2D" uid="uid://cqlfj3y1xfrn2" path="res://asset/UI/basic_ui.png" id="2_vcon2"]
 [ext_resource type="PackedScene" uid="uid://l0el567f4y6f" path="res://MenuStuff/MenuScenes/pause_menu.tscn" id="2_xp36h"]
 
 [sub_resource type="GDScript" id="GDScript_2yoa7"]
@@ -17,6 +19,10 @@ func _on_pause_button_pressed() -> void:
 	$PauseMenu.pause()
 "
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_0pxtk"]
+atlas = ExtResource("2_vcon2")
+region = Rect2(97, 194, 9, 12)
+
 [node name="HUD" type="CanvasLayer"]
 script = SubResource("GDScript_2yoa7")
 
@@ -25,7 +31,11 @@ offset_left = 10.0
 offset_top = 10.0
 offset_right = 42.0
 offset_bottom = 42.0
-text = "||"
+theme = ExtResource("1_niywp")
+theme_type_variation = &"GameMenuButton"
+icon = SubResource("AtlasTexture_0pxtk")
+icon_alignment = 1
+expand_icon = true
 
 [node name="PauseMenu" parent="." instance=ExtResource("2_xp36h")]
 
