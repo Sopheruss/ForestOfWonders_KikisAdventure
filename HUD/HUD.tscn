@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://befd823q5nx0y"]
+[gd_scene load_steps=8 format=3 uid="uid://befd823q5nx0y"]
 
 [ext_resource type="Theme" uid="uid://djsqsbsh60m2r" path="res://MenuStuff/game_ui_theme.tres" id="1_niywp"]
 [ext_resource type="Texture2D" uid="uid://cqlfj3y1xfrn2" path="res://asset/UI/basic_ui.png" id="2_vcon2"]
@@ -23,6 +23,13 @@ func _on_pause_button_pressed() -> void:
 atlas = ExtResource("2_vcon2")
 region = Rect2(97, 194, 9, 12)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_jvrsx"]
+atlas = ExtResource("2_vcon2")
+region = Rect2(11, 155, 26, 36)
+
+[sub_resource type="LabelSettings" id="LabelSettings_q5wop"]
+font_color = Color(0.386904, 0.145444, 0.0283871, 1)
+
 [node name="HUD" type="CanvasLayer"]
 script = SubResource("GDScript_2yoa7")
 
@@ -38,5 +45,35 @@ icon_alignment = 1
 expand_icon = true
 
 [node name="PauseMenu" parent="." instance=ExtResource("2_xp36h")]
+
+[node name="InventoryBar" type="HBoxContainer" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -68.0
+offset_right = 43.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="InventorySlot" type="TextureRect" parent="InventoryBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = SubResource("AtlasTexture_jvrsx")
+expand_mode = 5
+
+[node name="Anzahl" type="Label" parent="InventoryBar/InventorySlot"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 33.0
+offset_right = 54.0
+offset_bottom = 59.0
+text = "8x"
+label_settings = SubResource("LabelSettings_q5wop")
+horizontal_alignment = 2
+vertical_alignment = 2
+clip_text = true
 
 [connection signal="pressed" from="PauseButton" to="." method="_on_pause_button_pressed"]
