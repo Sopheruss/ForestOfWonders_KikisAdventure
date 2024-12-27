@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://snr4w7dpfra7"]
+[gd_scene load_steps=8 format=3 uid="uid://snr4w7dpfra7"]
 
 [ext_resource type="Script" path="res://interactable_map/stone.gd" id="1_fe8ws"]
 [ext_resource type="Texture2D" uid="uid://6hw60g27v5g" path="res://asset/fullAssPack/Props/Stone and Rock.png" id="2_j352p"]
+[ext_resource type="AudioStream" uid="uid://cegop26n0n4gx" path="res://asset/sounds/rock-break.ogg" id="2_sdehd"]
 [ext_resource type="PackedScene" uid="uid://b1i6pxhkye86b" path="res://interaction/interaction_area/interaction_area.tscn" id="3_3xm1p"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qk4us"]
@@ -22,6 +23,12 @@ y_sort_enabled = true
 collision_layer = 6
 collision_mask = 5
 script = ExtResource("1_fe8ws")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer2D" parent="sampleStone"]
+position = Vector2(3.50909, 14.4163)
+scale = Vector2(0.899394, 0.87907)
+stream = ExtResource("2_sdehd")
+volume_db = -25.0
 
 [node name="sprite" type="Sprite2D" parent="sampleStone"]
 position = Vector2(3.50909, 14.4163)

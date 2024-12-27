@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://dwnf1v3ab87dg"]
+[gd_scene load_steps=8 format=3 uid="uid://dwnf1v3ab87dg"]
 
 [ext_resource type="Script" path="res://interactable_map/tree.gd" id="1_ms26j"]
 [ext_resource type="Texture2D" uid="uid://nljld2dto8oj" path="res://asset/fullAssPack/Props/Tree.png" id="2_l8ibb"]
+[ext_resource type="AudioStream" uid="uid://bgcq0ieovgqin" path="res://asset/sounds/chop.ogg" id="2_oex0d"]
 [ext_resource type="PackedScene" uid="uid://b1i6pxhkye86b" path="res://interaction/interaction_area/interaction_area.tscn" id="3_sbs5i"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cs7b7"]
@@ -22,6 +23,12 @@ y_sort_enabled = true
 collision_layer = 6
 collision_mask = 5
 script = ExtResource("1_ms26j")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer2D" parent="sampleTree"]
+position = Vector2(4.7, 14.0198)
+scale = Vector2(1.02727, 0.904651)
+stream = ExtResource("2_oex0d")
+volume_db = -25.0
 
 [node name="sprite" type="Sprite2D" parent="sampleTree"]
 position = Vector2(4.7, 14.0198)
