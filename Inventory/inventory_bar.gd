@@ -2,17 +2,10 @@ extends HBoxContainer
 
 @export var slot_scene: PackedScene
 
-var inventory = [] #Liste für alle slots
 var slots = {} #Referenz zu slot-nodes
-
-func create_slots(count):
-	# Lösche bestehende Slots
-	for i in inventory:
-		var slot = slot_scene.new()
-		$HBoxContainer.add_child(slot)
-		slots.append(slot)
 		
 func add_item(texture: Texture):
+	#signal hinzufügen um slots zu informieren, was sie machen sollen
 	if slots.has(texture):
 		var counter = slots.get(texture)
 		counter = counter+1;
@@ -26,7 +19,7 @@ func add_item(texture: Texture):
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	create_slots(5)
+	pass
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

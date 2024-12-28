@@ -47,12 +47,30 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -20.0
-offset_top = -68.0
+offset_left = -43.0
+offset_top = -36.0
 offset_right = 43.0
 grow_horizontal = 2
 grow_vertical = 0
 script = ExtResource("4_ekcow")
 slot_scene = ExtResource("5_kyq33")
+
+[node name="InventorySlot" parent="InventoryBar" instance=ExtResource("5_kyq33")]
+layout_mode = 2
+
+[node name="InventorySlot2" parent="InventoryBar" instance=ExtResource("5_kyq33")]
+layout_mode = 2
+
+[node name="InventorySlot3" parent="InventoryBar" instance=ExtResource("5_kyq33")]
+layout_mode = 2
+
+[node name="InventorySlot4" parent="InventoryBar" instance=ExtResource("5_kyq33")]
+layout_mode = 2
+
+[node name="InventorySlot5" parent="InventoryBar" instance=ExtResource("5_kyq33")]
+layout_mode = 2
+
+[node name="InventorySlot6" parent="InventoryBar" instance=ExtResource("5_kyq33")]
+layout_mode = 2
 
 [connection signal="pressed" from="PauseButton" to="." method="_on_pause_button_pressed"]
