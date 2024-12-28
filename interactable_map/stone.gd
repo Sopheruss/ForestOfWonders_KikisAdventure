@@ -12,6 +12,4 @@ func _sample_Stone():
 	sprite.hide()  # Hide the tree's visual sprite
 	collision_shape.disabled = true  # Disable the collision shape
 	interaction_area.queue_free()  # Optionally remove the interaction area
-	#singleton einfügen
-	var inventory_bar = get_tree().root.get_node("")
-	inventory_bar.add_item(sprite.texture)
+	InventoryBar.add_item(sprite.texture)

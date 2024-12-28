@@ -55,7 +55,7 @@ grow_vertical = 0
 script = ExtResource("4_ekcow")
 slot_scene = ExtResource("5_kyq33")
 
-[node name="InventorySlot" parent="InventoryBar" instance=ExtResource("5_kyq33")]
+[node name="InventorySlot1" parent="InventoryBar" instance=ExtResource("5_kyq33")]
 layout_mode = 2
 
 [node name="InventorySlot2" parent="InventoryBar" instance=ExtResource("5_kyq33")]
