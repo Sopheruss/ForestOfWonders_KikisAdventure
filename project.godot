@@ -19,7 +19,6 @@ config/icon="res://icon.svg"
 [autoload]
 
 InteractionManager="*res://interaction/interactionManager.tscn"
-InventoryBar="*res://Inventory/inventory_bar.gd"
 
 [display]
 
