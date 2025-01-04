@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=3 uid="uid://cjdh5no202u2h"]
+
+[ext_resource type="Texture2D" uid="uid://cqlfj3y1xfrn2" path="res://asset/UI/basic_ui.png" id="1_lsxam"]
+[ext_resource type="Script" path="res://Inventory/inventory_slot.gd" id="2_st6dp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jvrsx"]
+atlas = ExtResource("1_lsxam")
+region = Rect2(11, 155, 26, 36)
+
+[sub_resource type="LabelSettings" id="LabelSettings_q5wop"]
+font_size = 10
+font_color = Color(0.386904, 0.145444, 0.0283871, 1)
+
+[node name="InventorySlot" type="TextureRect"]
+offset_right = 61.0
+offset_bottom = 84.4615
+size_flags_horizontal = 3
+texture = SubResource("AtlasTexture_jvrsx")
+stretch_mode = 1
+script = ExtResource("2_st6dp")
+
+[node name="Anzahl" type="Label" parent="."]
+layout_direction = 1
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 20.0
+offset_top = -3.23075
+offset_right = -8.0
+offset_bottom = 11.7692
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_q5wop")
+horizontal_alignment = 2
+vertical_alignment = 2
+clip_text = true
+
+[node name="Item" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 7.0
+offset_right = 54.0
+offset_bottom = 40.0
+stretch_mode = 3

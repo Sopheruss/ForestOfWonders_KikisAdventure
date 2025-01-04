@@ -1,8 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://dta8nt21g4hh2"]
+[gd_scene load_steps=8 format=3 uid="uid://dta8nt21g4hh2"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_dgj5q"]
 [ext_resource type="PackedScene" uid="uid://j8nrx6qou55l" path="res://map.tscn" id="2_hvywo"]
 [ext_resource type="PackedScene" uid="uid://cwhngeb8vo338" path="res://player.tscn" id="3_3s42o"]
+[ext_resource type="Script" path="res://HUD/progress_bar.gd" id="5_2ycxc"]
+[ext_resource type="PackedScene" uid="uid://befd823q5nx0y" path="res://HUD/HUD.tscn" id="5_so6f0"]
+[ext_resource type="Texture2D" uid="uid://bedqs53fwfltl" path="res://asset/Button_Bar_Texture/healthbarUnder.png" id="6_6xog0"]
+[ext_resource type="Texture2D" uid="uid://dc7t6yr5qpldv" path="res://asset/Button_Bar_Texture/healthbarProgress.png" id="7_ggrc5"]
 
 [node name="game" type="Node2D"]
 y_sort_enabled = true
@@ -11,4 +15,26 @@ script = ExtResource("1_dgj5q")
 [node name="Map" parent="." instance=ExtResource("2_hvywo")]
 
 [node name="Player" parent="." instance=ExtResource("3_3s42o")]
-position = Vector2(700, 892)
+position = Vector2(688, 898)
+
+[node name="HUD" parent="." instance=ExtResource("5_so6f0")]
+
+[node name="EnergyBar" type="TextureProgressBar" parent="HUD" node_paths=PackedStringArray("player")]
+z_index = -1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -214.0
+offset_top = 18.0
+offset_right = -14.0
+offset_bottom = 33.0
+grow_horizontal = 0
+nine_patch_stretch = true
+stretch_margin_left = 4
+stretch_margin_top = 4
+stretch_margin_right = 4
+stretch_margin_bottom = 4
+texture_under = ExtResource("6_6xog0")
+texture_progress = ExtResource("7_ggrc5")
+script = ExtResource("5_2ycxc")
+player = NodePath("../../Player")
