@@ -31,8 +31,8 @@ script = SubResource("GDScript_2yoa7")
 [node name="PauseButton" type="Button" parent="."]
 offset_left = 10.0
 offset_top = 10.0
-offset_right = 42.0
-offset_bottom = 42.0
+offset_right = 60.0
+offset_bottom = 60.0
 theme = ExtResource("1_niywp")
 theme_type_variation = &"GameMenuButton"
 icon = SubResource("AtlasTexture_0pxtk")
