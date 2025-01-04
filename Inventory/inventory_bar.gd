@@ -21,10 +21,7 @@ func _ready() -> void:
 		$InventorySlot2,
 		$InventorySlot3,
 		$InventorySlot4,
-		$InventorySlot5
 		]
-	for slot in slots:
-		print(slot)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
