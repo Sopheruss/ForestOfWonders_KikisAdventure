@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=4 uid="uid://j8nrx6qou55l"]
+[gd_scene load_steps=60 format=4 uid="uid://j8nrx6qou55l"]
 
 [ext_resource type="Texture2D" uid="uid://bqg5c03odw7wj" path="res://asset/water.PNG" id="1_3bp8d"]
 [ext_resource type="Texture2D" uid="uid://bw8ska4b7reqe" path="res://asset/fullAssPack/Tileset/Dirt - simplified.png" id="1_bcefj"]
@@ -19,6 +19,8 @@
 [ext_resource type="PackedScene" uid="uid://snr4w7dpfra7" path="res://interactable_map/stonge_large.tscn" id="12_obg7j"]
 [ext_resource type="PackedScene" uid="uid://b1i6pxhkye86b" path="res://interaction/interaction_area/interaction_area.tscn" id="14_ohrfu"]
 [ext_resource type="PackedScene" uid="uid://ynt855jyl43d" path="res://interactable_map/special_item.tscn" id="15_ie1vb"]
+[ext_resource type="Script" path="res://housing_logic.gd" id="20_4hjjm"]
+[ext_resource type="PackedScene" uid="uid://cjdh5no202u2h" path="res://Inventory/inventory_slot.tscn" id="21_5ml4v"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_xyrav"]
 tile_data = PackedInt32Array(0, 262146, 1, 65536, 262146, 2, 131072, 2, 2, 196608, 2, 3)
@@ -754,3 +756,39 @@ collision_layer = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Campfire/InteractionArea"]
 position = Vector2(-1, 25)
 shape = SubResource("CircleShape2D_8h8np")
+
+[node name="Housing" type="Node2D" parent="."]
+script = ExtResource("20_4hjjm")
+
+[node name="HouseOrTent" type="TextureRect" parent="Housing"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Speechbubble" type="TextureRect" parent="Housing"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Housing/Speechbubble"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Conditions" type="HBoxContainer" parent="Housing/Speechbubble"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="InventorySlot0" parent="Housing/Speechbubble/Conditions" instance=ExtResource("21_5ml4v")]
+layout_mode = 2
+
+[node name="InventorySlot1" parent="Housing/Speechbubble/Conditions" instance=ExtResource("21_5ml4v")]
+layout_mode = 2
+
+[node name="InventorySlot2" parent="Housing/Speechbubble/Conditions" instance=ExtResource("21_5ml4v")]
+layout_mode = 2
+
+[node name="InventorySlot3" parent="Housing/Speechbubble/Conditions" instance=ExtResource("21_5ml4v")]
+layout_mode = 2
+
+[node name="InventorySlot4" parent="Housing/Speechbubble/Conditions" instance=ExtResource("21_5ml4v")]
+layout_mode = 2
