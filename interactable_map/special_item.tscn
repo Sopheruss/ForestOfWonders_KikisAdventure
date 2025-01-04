@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=3 uid="uid://ynt855jyl43d"]
+
+[ext_resource type="Script" path="res://interactable_map/special_item.gd" id="1_ukum8"]
+[ext_resource type="Texture2D" uid="uid://b5qfjfbvqhn78" path="res://asset/misc sprites.png" id="2_4ulxf"]
+[ext_resource type="PackedScene" uid="uid://b1i6pxhkye86b" path="res://interaction/interaction_area/interaction_area.tscn" id="3_e51il"]
+[ext_resource type="AudioStream" uid="uid://caf8xa4ehvxhg" path="res://asset/sounds/newthingget.ogg" id="4_6tvgo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2tjls"]
+atlas = ExtResource("2_4ulxf")
+region = Rect2(210, 123, 27, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_00l6a"]
+size = Vector2(12, 7)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fu26v"]
+radius = 15.1327
+
+[node name="sampleSpecial" type="Node2D"]
+y_sort_enabled = true
+
+[node name="sampleSpecial" type="StaticBody2D" parent="."]
+y_sort_enabled = true
+collision_layer = 6
+collision_mask = 5
+script = ExtResource("1_ukum8")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer2D" parent="sampleSpecial"]
+stream = ExtResource("4_6tvgo")
+volume_db = -15.0
+
+[node name="sprite" type="Sprite2D" parent="sampleSpecial"]
+position = Vector2(-1.31636, 12.0262)
+scale = Vector2(0.393805, 0.401047)
+texture = SubResource("AtlasTexture_2tjls")
+offset = Vector2(0, -15)
+
+[node name="CollisionShape" type="CollisionShape2D" parent="sampleSpecial"]
+position = Vector2(-1, 6.5)
+shape = SubResource("RectangleShape2D_00l6a")
+
+[node name="InteractionArea" parent="sampleSpecial" instance=ExtResource("3_e51il")]
+collision_layer = 4
+action_name = "collect"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="sampleSpecial/InteractionArea"]
+position = Vector2(-1, 6)
+shape = SubResource("CircleShape2D_fu26v")

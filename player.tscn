@@ -1,7 +1,8 @@
-[gd_scene load_steps=35 format=3 uid="uid://cwhngeb8vo338"]
+[gd_scene load_steps=36 format=3 uid="uid://cwhngeb8vo338"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_ra6gl"]
 [ext_resource type="Texture2D" uid="uid://vfd860oxfmwh" path="res://asset/KikiWithShadows.png" id="2_x4pc7"]
+[ext_resource type="AudioStream" uid="uid://c78r4iktmj455" path="res://asset/sounds/footsteps.ogg" id="3_kaph4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5ei4g"]
 atlas = ExtResource("2_x4pc7")
@@ -279,3 +280,9 @@ limit_top = 18
 limit_right = 1343
 limit_bottom = 1260
 editor_draw_limits = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_kaph4")
+volume_db = -20.0
+pitch_scale = 0.7
+parameters/looping = true
