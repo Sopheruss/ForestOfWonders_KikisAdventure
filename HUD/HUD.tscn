@@ -1,0 +1,75 @@
+[gd_scene load_steps=8 format=3 uid="uid://befd823q5nx0y"]
+
+[ext_resource type="Theme" uid="uid://djsqsbsh60m2r" path="res://MenuStuff/game_ui_theme.tres" id="1_niywp"]
+[ext_resource type="Texture2D" uid="uid://cqlfj3y1xfrn2" path="res://asset/UI/basic_ui.png" id="2_vcon2"]
+[ext_resource type="PackedScene" uid="uid://l0el567f4y6f" path="res://MenuStuff/MenuScenes/pause_menu.tscn" id="2_xp36h"]
+[ext_resource type="Script" path="res://Inventory/inventory_bar.gd" id="4_ekcow"]
+[ext_resource type="PackedScene" uid="uid://cjdh5no202u2h" path="res://Inventory/inventory_slot.tscn" id="5_kyq33"]
+
+[sub_resource type="GDScript" id="GDScript_2yoa7"]
+script/source = "extends CanvasLayer
+
+# hides pauseMenu, if it is not needed 
+# allows functionality of pause Button
+# otherwise PauseMenu would overlapp PauseButton and it could not be pressed
+func _process(delta: float) -> void:
+	if $PauseMenu.get_tree().paused == false: 
+		$PauseMenu.hide()
+
+# starts Animation of PauseMenu (see AnimationPlayer/Script in PauseMenu) 
+func _on_pause_button_pressed() -> void:
+	$PauseMenu.pause()
+"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0pxtk"]
+atlas = ExtResource("2_vcon2")
+region = Rect2(97, 194, 9, 12)
+
+[node name="HUD" type="CanvasLayer"]
+script = SubResource("GDScript_2yoa7")
+
+[node name="PauseButton" type="Button" parent="."]
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 42.0
+offset_bottom = 42.0
+theme = ExtResource("1_niywp")
+theme_type_variation = &"GameMenuButton"
+icon = SubResource("AtlasTexture_0pxtk")
+icon_alignment = 1
+expand_icon = true
+
+[node name="InventoryBar" type="HBoxContainer" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -210.0
+offset_top = -86.0
+offset_right = 210.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("4_ekcow")
+
+[node name="InventorySlot0" parent="InventoryBar" instance=ExtResource("5_kyq33")]
+layout_mode = 2
+
+[node name="InventorySlot1" parent="InventoryBar" instance=ExtResource("5_kyq33")]
+layout_mode = 2
+
+[node name="InventorySlot2" parent="InventoryBar" instance=ExtResource("5_kyq33")]
+layout_mode = 2
+
+[node name="InventorySlot3" parent="InventoryBar" instance=ExtResource("5_kyq33")]
+layout_mode = 2
+
+[node name="InventorySlot4" parent="InventoryBar" instance=ExtResource("5_kyq33")]
+layout_mode = 2
+
+[node name="InventorySlot5" parent="InventoryBar" instance=ExtResource("5_kyq33")]
+layout_mode = 2
+
+[node name="PauseMenu" parent="." instance=ExtResource("2_xp36h")]
+
+[connection signal="pressed" from="PauseButton" to="." method="_on_pause_button_pressed"]
