@@ -4,6 +4,7 @@ extends StaticBody2D
 @onready var sprite = $sprite  # Reference to the tree's Sprite2D
 @onready var collision_shape = $CollisionShape  # Reference to the collision shape
 @onready var audio_player = $AudioStreamPlayer # Reference to audio stream
+@onready var inventory_bar = get_tree().root.get_node("game").get_node("HUD").get_node("InventoryBar")
 
 func _ready() -> void:
 	interaction_area.interact = Callable(self, "_sample_Special")  # Register the interact callback
@@ -14,3 +15,4 @@ func _sample_Special():
 	collision_shape.disabled = true  # Disable the collision shape
 	audio_player.play()
 	interaction_area.queue_free()  # Optionally remove the interaction area
+	inventory_bar.add_item(sprite.texture)
