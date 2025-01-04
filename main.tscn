@@ -20,6 +20,7 @@ position = Vector2(688, 898)
 [node name="HUD" parent="." instance=ExtResource("5_so6f0")]
 
 [node name="EnergyBar" type="TextureProgressBar" parent="HUD" node_paths=PackedStringArray("player")]
+z_index = -1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
