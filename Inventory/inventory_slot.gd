@@ -28,8 +28,6 @@ func _ready() -> void:
 		$Item.texture = null
 		
 	
-
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if (item_count > 0):

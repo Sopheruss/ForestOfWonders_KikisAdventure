@@ -3,14 +3,6 @@ extends HBoxContainer
 var slots = []
 		
 func add_item(texture: Texture):
-	#if slots.has(texture):
-		#var counter = slots.get(texture)
-		#counter = counter+1;
-		#slots[texture] = counter
-		#print(counter)
-	#else:
-		#slots[texture] = 1
-		#print("new")
 	for slot in slots:
 		if slot.get_itemTexture() == texture:
 			slot.update_count()
@@ -20,8 +12,6 @@ func add_item(texture: Texture):
 			break
 		
 	
-
-
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
