@@ -39,8 +39,6 @@ icon = SubResource("AtlasTexture_0pxtk")
 icon_alignment = 1
 expand_icon = true
 
-[node name="PauseMenu" parent="." instance=ExtResource("2_xp36h")]
-
 [node name="InventoryBar" type="HBoxContainer" parent="."]
 anchors_preset = 7
 anchor_left = 0.5
@@ -71,5 +69,7 @@ layout_mode = 2
 
 [node name="InventorySlot5" parent="InventoryBar" instance=ExtResource("5_kyq33")]
 layout_mode = 2
+
+[node name="PauseMenu" parent="." instance=ExtResource("2_xp36h")]
 
 [connection signal="pressed" from="PauseButton" to="." method="_on_pause_button_pressed"]
