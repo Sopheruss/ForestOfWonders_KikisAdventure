@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=4 uid="uid://j8nrx6qou55l"]
+[gd_scene load_steps=59 format=4 uid="uid://j8nrx6qou55l"]
 
 [ext_resource type="Texture2D" uid="uid://bqg5c03odw7wj" path="res://asset/water.PNG" id="1_3bp8d"]
 [ext_resource type="Texture2D" uid="uid://bw8ska4b7reqe" path="res://asset/fullAssPack/Tileset/Dirt - simplified.png" id="1_bcefj"]
@@ -19,10 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://snr4w7dpfra7" path="res://interactable_map/stonge_large.tscn" id="12_obg7j"]
 [ext_resource type="PackedScene" uid="uid://b1i6pxhkye86b" path="res://interaction/interaction_area/interaction_area.tscn" id="14_ohrfu"]
 [ext_resource type="PackedScene" uid="uid://ynt855jyl43d" path="res://interactable_map/special_item.tscn" id="15_ie1vb"]
-[ext_resource type="Script" path="res://housing_logic.gd" id="20_4hjjm"]
-[ext_resource type="Texture2D" uid="uid://cqlfj3y1xfrn2" path="res://asset/UI/basic_ui.png" id="21_2ojtm"]
-[ext_resource type="PackedScene" uid="uid://cjdh5no202u2h" path="res://Inventory/inventory_slot.tscn" id="21_5ml4v"]
-[ext_resource type="Texture2D" uid="uid://b7yosfcox787d" path="res://asset/HouseTent.png" id="21_gy54c"]
+[ext_resource type="PackedScene" uid="uid://mqbjh652kna" path="res://gamingLogic/housing.tscn" id="20_3n50i"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_xyrav"]
 tile_data = PackedInt32Array(0, 262146, 1, 65536, 262146, 2, 131072, 2, 2, 196608, 2, 3)
@@ -665,25 +662,6 @@ size = Vector2(15, 11)
 [sub_resource type="CircleShape2D" id="CircleShape2D_8h8np"]
 radius = 27.54
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jvdew"]
-atlas = ExtResource("21_gy54c")
-region = Rect2(0, 0, 64.3512, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3w55y"]
-atlas = ExtResource("21_gy54c")
-region = Rect2(64.0007, 0, 63.9993, 64)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3w3k6"]
-size = Vector2(49, 36)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_02mp2"]
-atlas = ExtResource("21_2ojtm")
-region = Rect2(162.611, 177.783, 91.2444, 27.3779)
-
-[sub_resource type="LabelSettings" id="LabelSettings_vk61i"]
-font_size = 20
-font_color = Color(0.112031, 0.264267, 0.248669, 1)
-
 [node name="Map" type="Node2D"]
 y_sort_enabled = true
 position = Vector2(688, 927)
@@ -778,78 +756,4 @@ collision_layer = 4
 position = Vector2(-1, 25)
 shape = SubResource("CircleShape2D_8h8np")
 
-[node name="Housing" type="Node2D" parent="."]
-position = Vector2(15, -15)
-script = ExtResource("20_4hjjm")
-tent = SubResource("AtlasTexture_jvdew")
-house = SubResource("AtlasTexture_3w55y")
-
-[node name="HouseOrTent" type="TextureRect" parent="Housing"]
-z_index = 5
-y_sort_enabled = true
-offset_left = -41.0
-offset_top = -66.0
-offset_right = 15.0
-offset_bottom = -10.0
-expand_mode = 3
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Housing/HouseOrTent"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Housing/HouseOrTent/StaticBody2D"]
-position = Vector2(28.5, 53)
-shape = SubResource("RectangleShape2D_3w3k6")
-
-[node name="Speechbubble" type="TextureRect" parent="Housing"]
-z_index = 100
-offset_left = 16.0
-offset_top = -66.0
-offset_right = 106.0
-offset_bottom = -40.0
-texture = SubResource("AtlasTexture_02mp2")
-stretch_mode = 2
-
-[node name="Label" type="Label" parent="Housing/Speechbubble"]
-layout_mode = 0
-offset_left = 6.0
-offset_top = 3.0
-offset_right = 85.0
-offset_bottom = 14.0
-scale = Vector2(0.25, 0.25)
-text = "Collect following items:"
-label_settings = SubResource("LabelSettings_vk61i")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Conditions" type="HBoxContainer" parent="Housing/Speechbubble"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -33.5
-offset_top = -17.0
-offset_right = 32.5
-offset_bottom = -3.0
-grow_horizontal = 2
-grow_vertical = 0
-
-[node name="InventorySlot0" parent="Housing/Speechbubble/Conditions" instance=ExtResource("21_5ml4v")]
-layout_mode = 2
-expand_mode = 1
-
-[node name="InventorySlot1" parent="Housing/Speechbubble/Conditions" instance=ExtResource("21_5ml4v")]
-layout_mode = 2
-expand_mode = 1
-
-[node name="InventorySlot2" parent="Housing/Speechbubble/Conditions" instance=ExtResource("21_5ml4v")]
-layout_mode = 2
-expand_mode = 1
-
-[node name="InventorySlot3" parent="Housing/Speechbubble/Conditions" instance=ExtResource("21_5ml4v")]
-layout_mode = 2
-expand_mode = 1
-
-[node name="InventorySlot4" parent="Housing/Speechbubble/Conditions" instance=ExtResource("21_5ml4v")]
-layout_mode = 2
-expand_mode = 1
+[node name="Housing" parent="." instance=ExtResource("20_3n50i")]

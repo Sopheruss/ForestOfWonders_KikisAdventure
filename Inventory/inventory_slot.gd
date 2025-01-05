@@ -4,8 +4,6 @@ extends TextureRect
 var item_texture: Texture = null
 var item_count: int = 0
 
-#func set => textur und item setten
-
 
 func update_item(texture: Texture, count: int):
 	item_texture = texture
