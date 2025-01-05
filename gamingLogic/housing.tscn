@@ -101,29 +101,25 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -33.5
+offset_left = -36.5
 offset_top = -17.0
-offset_right = 32.5
-offset_bottom = -3.0
+offset_right = 109.5
+offset_bottom = 19.0
 grow_horizontal = 2
 grow_vertical = 0
+scale = Vector2(0.5, 0.5)
 
 [node name="InventorySlot0" parent="Speechbubble/Conditions" instance=ExtResource("7_8satl")]
 layout_mode = 2
-expand_mode = 1
 
 [node name="InventorySlot1" parent="Speechbubble/Conditions" instance=ExtResource("7_8satl")]
 layout_mode = 2
-expand_mode = 1
 
 [node name="InventorySlot2" parent="Speechbubble/Conditions" instance=ExtResource("7_8satl")]
 layout_mode = 2
-expand_mode = 1
 
 [node name="InventorySlot3" parent="Speechbubble/Conditions" instance=ExtResource("7_8satl")]
 layout_mode = 2
-expand_mode = 1
 
 [node name="InventorySlot4" parent="Speechbubble/Conditions" instance=ExtResource("7_8satl")]
 layout_mode = 2
-expand_mode = 1
