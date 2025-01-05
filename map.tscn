@@ -674,7 +674,7 @@ atlas = ExtResource("21_gy54c")
 region = Rect2(64.0007, 0, 63.9993, 64)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3w3k6"]
-size = Vector2(49, 20)
+size = Vector2(49, 36)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_02mp2"]
 atlas = ExtResource("21_2ojtm")
@@ -785,6 +785,7 @@ tent = SubResource("AtlasTexture_jvdew")
 house = SubResource("AtlasTexture_3w55y")
 
 [node name="HouseOrTent" type="TextureRect" parent="Housing"]
+z_index = 5
 y_sort_enabled = true
 offset_left = -41.0
 offset_top = -66.0
@@ -795,7 +796,7 @@ expand_mode = 3
 [node name="StaticBody2D" type="StaticBody2D" parent="Housing/HouseOrTent"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Housing/HouseOrTent/StaticBody2D"]
-position = Vector2(28.5, 45)
+position = Vector2(28.5, 53)
 shape = SubResource("RectangleShape2D_3w3k6")
 
 [node name="Speechbubble" type="TextureRect" parent="Housing"]
