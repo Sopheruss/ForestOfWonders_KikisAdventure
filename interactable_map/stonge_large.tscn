@@ -1,13 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://snr4w7dpfra7"]
+[gd_scene load_steps=7 format=3 uid="uid://snr4w7dpfra7"]
 
 [ext_resource type="Script" path="res://interactable_map/stone.gd" id="1_fe8ws"]
-[ext_resource type="Texture2D" uid="uid://6hw60g27v5g" path="res://asset/fullAssPack/Props/Stone and Rock.png" id="2_j352p"]
 [ext_resource type="AudioStream" uid="uid://cegop26n0n4gx" path="res://asset/sounds/rock-break.ogg" id="2_sdehd"]
 [ext_resource type="PackedScene" uid="uid://b1i6pxhkye86b" path="res://interaction/interaction_area/interaction_area.tscn" id="3_3xm1p"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qk4us"]
-atlas = ExtResource("2_j352p")
-region = Rect2(33, 7, 30, 21)
+[ext_resource type="Texture2D" uid="uid://bpiu3kcrnndep" path="res://gamingLogic/resources/stonge_large.tres" id="3_34k6u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_00l6a"]
 size = Vector2(24, 13)
@@ -33,7 +29,7 @@ volume_db = -25.0
 [node name="sprite" type="Sprite2D" parent="sampleStone"]
 position = Vector2(3.50909, 14.4163)
 scale = Vector2(0.899394, 0.87907)
-texture = SubResource("AtlasTexture_qk4us")
+texture = ExtResource("3_34k6u")
 offset = Vector2(0, -15)
 
 [node name="CollisionShape" type="CollisionShape2D" parent="sampleStone"]

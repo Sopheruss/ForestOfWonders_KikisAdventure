@@ -1,13 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://ynt855jyl43d"]
+[gd_scene load_steps=7 format=3 uid="uid://ynt855jyl43d"]
 
 [ext_resource type="Script" path="res://interactable_map/special_item.gd" id="1_ukum8"]
-[ext_resource type="Texture2D" uid="uid://b5qfjfbvqhn78" path="res://asset/misc sprites.png" id="2_4ulxf"]
 [ext_resource type="PackedScene" uid="uid://b1i6pxhkye86b" path="res://interaction/interaction_area/interaction_area.tscn" id="3_e51il"]
+[ext_resource type="Texture2D" uid="uid://1m8eorrhgxqr" path="res://gamingLogic/resources/special_item.tres" id="3_xrx4k"]
 [ext_resource type="AudioStream" uid="uid://caf8xa4ehvxhg" path="res://asset/sounds/newthingget.ogg" id="4_6tvgo"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2tjls"]
-atlas = ExtResource("2_4ulxf")
-region = Rect2(210, 123, 27, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_00l6a"]
 size = Vector2(12, 7)
@@ -31,7 +27,7 @@ volume_db = -15.0
 [node name="sprite" type="Sprite2D" parent="sampleSpecial"]
 position = Vector2(-1.31636, 12.0262)
 scale = Vector2(0.393805, 0.401047)
-texture = SubResource("AtlasTexture_2tjls")
+texture = ExtResource("3_xrx4k")
 offset = Vector2(0, -15)
 
 [node name="CollisionShape" type="CollisionShape2D" parent="sampleSpecial"]

@@ -1,13 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://dwnf1v3ab87dg"]
+[gd_scene load_steps=7 format=3 uid="uid://dwnf1v3ab87dg"]
 
 [ext_resource type="Script" path="res://interactable_map/tree.gd" id="1_ms26j"]
-[ext_resource type="Texture2D" uid="uid://nljld2dto8oj" path="res://asset/fullAssPack/Props/Tree.png" id="2_l8ibb"]
 [ext_resource type="AudioStream" uid="uid://bgcq0ieovgqin" path="res://asset/sounds/chop.ogg" id="2_oex0d"]
+[ext_resource type="Texture2D" uid="uid://dwunfkkmn0la2" path="res://gamingLogic/resources/tree_lightGreen.tres" id="3_d13im"]
 [ext_resource type="PackedScene" uid="uid://b1i6pxhkye86b" path="res://interaction/interaction_area/interaction_area.tscn" id="3_sbs5i"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cs7b7"]
-atlas = ExtResource("2_l8ibb")
-region = Rect2(37, 4, 22, 43)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_00l6a"]
 size = Vector2(18, 6)
@@ -33,7 +29,7 @@ volume_db = -25.0
 [node name="sprite" type="Sprite2D" parent="sampleTree"]
 position = Vector2(4.7, 14.0198)
 scale = Vector2(1.02727, 0.904651)
-texture = SubResource("AtlasTexture_cs7b7")
+texture = ExtResource("3_d13im")
 offset = Vector2(0, -15)
 
 [node name="CollisionShape" type="CollisionShape2D" parent="sampleTree"]

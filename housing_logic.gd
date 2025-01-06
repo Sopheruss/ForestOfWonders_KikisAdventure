@@ -19,15 +19,19 @@ extends Node2D
 func check_requests(inventory: Array):
 	for requiremnet in requirements:
 		for item in inventory:
+			#means not all are items filled, so skip
+			if(item.get_itemTexture() == null):
+				break
 			#find matching texture
 			if(item.get_itemTexture() == requiremnet):
+				print("yeeei")
 				#compares count
 				if(item.get_count() == requirements[requiremnet]):
 					print("checked")
 					continue
 				#no need to look further at this point
 				else:
-					return
+					break
 		return
 	is_ready_to_build_house = true
 
@@ -43,11 +47,11 @@ func _ready() -> void:
 		$Speechbubble/Conditions/Condition4
 		]
 	requirements = {
-		special_item: 4,
-		stone: 20,
-		tree_bluegreen: 20,
-		tree_lightgreen: 20,
-		tree_orange: 20
+		special_item: 1,
+		stone: 2,
+		tree_bluegreen: 2,
+		tree_lightgreen: 2,
+		tree_orange: 2
 	}
 	var i = 0
 	for requirement in requirements:
