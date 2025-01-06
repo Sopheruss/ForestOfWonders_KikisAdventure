@@ -12,17 +12,19 @@ extends Node2D
 @onready var currentHousing = $HouseOrTent
 
 @onready var requirements = {}
-@onready var slots = [
-	$Speechbubble/Conditions/InventorySlot0,
-	$Speechbubble/Conditions/InventorySlot1,
-	$Speechbubble/Conditions/InventorySlot2,
-	$Speechbubble/Conditions/InventorySlot3,
-	$Speechbubble/Conditions/InventorySlot4
-]
+@onready var slots = []
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	slots = [
+		$Speechbubble/Conditions/Condition0,
+		$Speechbubble/Conditions/Condition1,
+		$Speechbubble/Conditions/Condition2,
+		$Speechbubble/Conditions/Condition3,
+		$Speechbubble/Conditions/Condition4
+		]
+		
 	currentHousing.texture = house
 	requirements = {
 		special_item: 4,

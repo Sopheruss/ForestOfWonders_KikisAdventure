@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://6hw60g27v5g" path="res://asset/fullAssPack/Props/Stone and Rock.png" id="4_8aiuw"]
 [ext_resource type="Texture2D" uid="uid://nljld2dto8oj" path="res://asset/fullAssPack/Props/Tree.png" id="5_nxrua"]
 [ext_resource type="Texture2D" uid="uid://cqlfj3y1xfrn2" path="res://asset/UI/basic_ui.png" id="6_1s2ct"]
-[ext_resource type="PackedScene" uid="uid://cjdh5no202u2h" path="res://Inventory/inventory_slot.tscn" id="7_8satl"]
+[ext_resource type="PackedScene" uid="uid://bx78aisbh68yu" path="res://condition.tscn" id="7_y8m2m"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jvdew"]
 atlas = ExtResource("2_husr2")
@@ -75,10 +75,10 @@ shape = SubResource("RectangleShape2D_3w3k6")
 
 [node name="Speechbubble" type="TextureRect" parent="."]
 z_index = 100
-offset_left = 16.0
-offset_top = -66.0
-offset_right = 106.0
-offset_bottom = -40.0
+offset_left = 23.0
+offset_top = -75.0
+offset_right = 114.0
+offset_bottom = -48.0
 texture = SubResource("AtlasTexture_02mp2")
 stretch_mode = 2
 
@@ -101,25 +101,25 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -36.5
-offset_top = -17.0
-offset_right = 109.5
-offset_bottom = 19.0
+offset_left = -32.5
+offset_top = -16.0
+offset_right = 183.5
+offset_bottom = 24.0
 grow_horizontal = 2
 grow_vertical = 0
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.3, 0.3)
 
-[node name="InventorySlot0" parent="Speechbubble/Conditions" instance=ExtResource("7_8satl")]
+[node name="Condition0" parent="Speechbubble/Conditions" instance=ExtResource("7_y8m2m")]
 layout_mode = 2
 
-[node name="InventorySlot1" parent="Speechbubble/Conditions" instance=ExtResource("7_8satl")]
+[node name="Condition1" parent="Speechbubble/Conditions" instance=ExtResource("7_y8m2m")]
 layout_mode = 2
 
-[node name="InventorySlot2" parent="Speechbubble/Conditions" instance=ExtResource("7_8satl")]
+[node name="Condition2" parent="Speechbubble/Conditions" instance=ExtResource("7_y8m2m")]
 layout_mode = 2
 
-[node name="InventorySlot3" parent="Speechbubble/Conditions" instance=ExtResource("7_8satl")]
+[node name="Condition3" parent="Speechbubble/Conditions" instance=ExtResource("7_y8m2m")]
 layout_mode = 2
 
-[node name="InventorySlot4" parent="Speechbubble/Conditions" instance=ExtResource("7_8satl")]
+[node name="Condition4" parent="Speechbubble/Conditions" instance=ExtResource("7_y8m2m")]
 layout_mode = 2
