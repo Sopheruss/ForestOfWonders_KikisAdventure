@@ -10,13 +10,31 @@ extends Node2D
 @export var tree_orange: Texture
 
 @onready var currentHousing = $HouseOrTent
+@onready var is_ready_to_build_house = false
 
 @onready var requirements = {}
 @onready var slots = []
 
 
+func check_requests(inventory: Array):
+	for requiremnet in requirements:
+		for item in inventory:
+			#find matching texture
+			if(item.get_itemTexture() == requiremnet):
+				#compares count
+				if(item.get_count() == requirements[requiremnet]):
+					print("checked")
+					continue
+				#no need to look further at this point
+				else:
+					return
+		return
+	is_ready_to_build_house = true
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	currentHousing.texture = tent
+	
 	slots = [
 		$Speechbubble/Conditions/Condition0,
 		$Speechbubble/Conditions/Condition1,
@@ -24,8 +42,6 @@ func _ready() -> void:
 		$Speechbubble/Conditions/Condition3,
 		$Speechbubble/Conditions/Condition4
 		]
-		
-	currentHousing.texture = house
 	requirements = {
 		special_item: 4,
 		stone: 20,
@@ -42,4 +58,5 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if(is_ready_to_build_house):
+		currentHousing.texture = house
