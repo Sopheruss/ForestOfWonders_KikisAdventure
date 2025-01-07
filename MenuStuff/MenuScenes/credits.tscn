@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dvi28sbp6hddb"]
 
-[ext_resource type="Script" path="res://MenuStuff/MenuScripts/options_menu.gd" id="1_fsyf3"]
+[ext_resource type="Script" path="res://MenuStuff/MenuScripts/credits.gd" id="1_eprg1"]
 [ext_resource type="Theme" uid="uid://djsqsbsh60m2r" path="res://MenuStuff/game_ui_theme.tres" id="2_p7883"]
 
 [node name="Credits" type="Control"]
@@ -10,7 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_fsyf3")
+script = ExtResource("1_eprg1")
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 1

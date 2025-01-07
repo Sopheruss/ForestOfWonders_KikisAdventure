@@ -52,12 +52,6 @@ layout_mode = 2
 theme_type_variation = &"GameMenuButton"
 text = "Start"
 
-[node name="Options" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(100, 29)
-layout_mode = 2
-theme_type_variation = &"GameMenuButton"
-text = "Options"
-
 [node name="Credits" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(100, 29)
 layout_mode = 2
@@ -71,6 +65,5 @@ theme_type_variation = &"GameMenuButton"
 text = "Quit"
 
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/Start" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/Credits" to="." method="_on_credits_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

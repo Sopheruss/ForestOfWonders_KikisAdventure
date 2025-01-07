@@ -1,5 +1,10 @@
 extends Control
 
+@onready var muteButton = get_node("PanelContainer/MarginContainer/VBoxContainer/MuteButton")
+
+var sound = false
+var bus_idx = AudioServer.get_bus_index("Master")
+
 func _ready(): 
 	$AnimationPlayer.play("RESET")
 
@@ -25,12 +30,6 @@ func _on_resume_pressed() -> void:
 	else: 
 		resume()
 
-func _on_options_pressed() -> void:
-	if get_tree().paused == false: 
-		pass 
-	else: 
-		pass #TODO: needs to change acoordingly -> open options menu 
-
 func _on_quit_pressed() -> void:
 	if get_tree().paused == false: 
 		pass 
@@ -40,3 +39,14 @@ func _on_quit_pressed() -> void:
 # checks continous if esc is pressed 
 func _process(_delta):
 	testEsc()
+
+
+func _on_mute_button_pressed() -> void:
+	if sound:
+		muteButton.text = "Sound: ON"
+		AudioServer.set_bus_mute(bus_idx, false)
+		sound = false
+	else: 
+		muteButton.text = "Sound: OFF"
+		AudioServer.set_bus_mute(bus_idx, true)
+		sound = true
