@@ -1,8 +1,16 @@
-[gd_scene load_steps=36 format=3 uid="uid://cwhngeb8vo338"]
+[gd_scene load_steps=44 format=3 uid="uid://cwhngeb8vo338"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_ra6gl"]
 [ext_resource type="Texture2D" uid="uid://vfd860oxfmwh" path="res://asset/KikiWithShadows.png" id="2_x4pc7"]
 [ext_resource type="AudioStream" uid="uid://c78r4iktmj455" path="res://asset/sounds/footsteps.ogg" id="3_kaph4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_frpcp"]
+atlas = ExtResource("2_x4pc7")
+region = Rect2(128, 384, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2cv88"]
+atlas = ExtResource("2_x4pc7")
+region = Rect2(192, 384, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5ei4g"]
 atlas = ExtResource("2_x4pc7")
@@ -43,6 +51,30 @@ region = Rect2(128, 256, 64, 64)
 [sub_resource type="AtlasTexture" id="AtlasTexture_3jwwr"]
 atlas = ExtResource("2_x4pc7")
 region = Rect2(192, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5dgl4"]
+atlas = ExtResource("2_x4pc7")
+region = Rect2(128, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bxhoy"]
+atlas = ExtResource("2_x4pc7")
+region = Rect2(192, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p48o6"]
+atlas = ExtResource("2_x4pc7")
+region = Rect2(256, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_44f35"]
+atlas = ExtResource("2_x4pc7")
+region = Rect2(320, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w8qb1"]
+atlas = ExtResource("2_x4pc7")
+region = Rect2(0, 384, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1xmpf"]
+atlas = ExtResource("2_x4pc7")
+region = Rect2(64, 384, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t5erh"]
 atlas = ExtResource("2_x4pc7")
@@ -128,6 +160,17 @@ region = Rect2(64, 256, 64, 64)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_frpcp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2cv88")
+}],
+"loop": true,
+"name": &"fainted",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_5ei4g")
 }, {
 "duration": 2.0,
@@ -174,6 +217,29 @@ animations = [{
 }],
 "loop": true,
 "name": &"magic_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5dgl4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bxhoy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p48o6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_44f35")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w8qb1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1xmpf")
+}],
+"loop": false,
+"name": &"poof",
 "speed": 5.0
 }, {
 "frames": [{
@@ -265,8 +331,7 @@ script = ExtResource("1_ra6gl")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_xpgxy")
-animation = &"magic_right"
-frame_progress = 0.323161
+animation = &"poof"
 offset = Vector2(0, -31)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

@@ -10,11 +10,26 @@ signal energyChanged # to signal change for EnergyBar
 @onready var audio_player = $AudioStreamPlayer
 var screen_size
 var is_moving = false # Tracks if the player is currently moving
+var poof_played = false
+
+func setCurrentHealth(value: int):
+	currentHealth = value
 
 func _ready():
 	screen_size = get_viewport_rect().size
 
 func _process(delta):
+	energyChanged.emit() # emits signal to energyBar if energy changed -> calls update
+	
+	if currentHealth <= 0: # check if energy is empty
+		
+		$AnimatedSprite2D.play("fainted")
+		return # stops movement and animation if energy is empty
+	
+	movement(delta)
+
+
+func movement(delta):
 	var velocity = Vector2.ZERO # The player's movement vector.
 	
 	# Movement logic
@@ -40,12 +55,7 @@ func _process(delta):
 	elif Input.is_action_pressed("up"):
 		$AnimatedSprite2D.play("walk_back")
 		velocity.y -= 1
-	
-	if currentHealth <= 0: # check if energy is empty
-		print("healthEmpty") #TODO: change what happens if Energy is empty
-
-	energyChanged.emit() # emits signal to energyBar if energy changed -> calls update
-	
+		
 	# Check movement and play/stop sound
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * speed
@@ -60,6 +70,3 @@ func _process(delta):
 	
 	position += velocity * delta
 	velocity = move_and_slide()
-	
-func setCurrentHealth(value: int):
-	currentHealth = value

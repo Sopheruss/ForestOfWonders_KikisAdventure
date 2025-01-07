@@ -12,9 +12,11 @@ func update():
 	# value is shown as percentage of maxHealth
 	value = player.currentHealth * 100 / player.maxHealth
 
+# to change Energy method handleEnergyChange needs to be called by item that changes energy
+# e.g. in special_item -> if it is picked up, energy changes 
 func handleEnergyChange(changeEnergy):
-	if currentHealth <= 0: 
+	if currentHealth <= 0: # does not change Energy further if health is 0
 		return 
 	
-	currentHealth -= changeEnergy
+	currentHealth -= changeEnergy # subtracts the amount of energy (set in each item)
 	player.setCurrentHealth(currentHealth) # sets current health in player

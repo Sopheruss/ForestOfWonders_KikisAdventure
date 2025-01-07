@@ -7,7 +7,7 @@ extends StaticBody2D
 @onready var inventory_bar = get_tree().root.get_node("game").get_node("HUD").get_node("InventoryBar")
 @onready var energy_bar = get_tree().root.get_node("game").get_node("HUD").get_node("EnergyBar")
 
-var special_item_energy = 5
+var special_item_energy_usage = 5
 
 func _ready() -> void:
 	interaction_area.interact = Callable(self, "_sample_Special")  # Register the interact callback
@@ -19,4 +19,4 @@ func _sample_Special():
 	audio_player.play()
 	interaction_area.queue_free()  # Optionally remove the interaction area
 	inventory_bar.add_item(sprite.texture)
-	energy_bar.handleEnergyChange(special_item_energy)
+	energy_bar.handleEnergyChange(special_item_energy_usage)
