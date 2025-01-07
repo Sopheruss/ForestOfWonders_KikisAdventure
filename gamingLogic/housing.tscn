@@ -43,6 +43,8 @@ tree_orange = ExtResource("7_wp5pi")
 
 [node name="Texture" type="Sprite2D" parent="."]
 y_sort_enabled = true
+position = Vector2(0, 30)
+offset = Vector2(0, -30)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 18)
