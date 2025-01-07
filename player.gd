@@ -9,8 +9,11 @@ signal energyChanged # to signal change for EnergyBar
 
 @export var speed = 100
 @onready var audio_player = $AudioStreamPlayer
+@onready var currentAnimation = "idles_down"
+@onready var lastPressed: String
 var screen_size
 var is_moving = false # Tracks if the player is currently moving
+
 
 func _ready():
 	screen_size = get_viewport_rect().size
@@ -27,6 +30,7 @@ func _process(delta):
 			velocity.y += 1
 		elif Input.is_action_pressed("up"):
 			velocity.y -= 1
+		lastPressed = "right"
 	elif Input.is_action_pressed("left"):
 		$AnimatedSprite2D.flip_h = true
 		$AnimatedSprite2D.play("walk_right")
@@ -35,12 +39,15 @@ func _process(delta):
 			velocity.y += 1
 		elif Input.is_action_pressed("up"):
 			velocity.y -= 1
+		lastPressed = "right"
 	elif Input.is_action_pressed("down"):
-		$AnimatedSprite2D.play("walk_front")
+		$AnimatedSprite2D.play("walk_down")
 		velocity.y += 1
+		lastPressed = "down"
 	elif Input.is_action_pressed("up"):
-		$AnimatedSprite2D.play("walk_back")
+		$AnimatedSprite2D.play("walk_up")
 		velocity.y -= 1
+		lastPressed = "up"
 
 	# Check movement and play/stop sound
 	if velocity.length() > 0:
@@ -52,7 +59,8 @@ func _process(delta):
 		if is_moving: # Stop sound if the player stops
 			audio_player.stop()
 			is_moving = false
-		$AnimatedSprite2D.play("idles_front")
+			currentAnimation = "idles_" + lastPressed
+		$AnimatedSprite2D.play(currentAnimation)
 	
 	position += velocity * delta
 	velocity = move_and_slide()
@@ -67,3 +75,8 @@ func pickUpStuffRemoveEnegry():
 		print("healthEmpty") #TODO: change what happens if Energy is empty
 		
 	energyChanged.emit() # signals progressBar in Main, that Energy changed and percentage must be changed
+
+func playMagicAnimation():
+	currentAnimation = "magic_" + lastPressed
+	await get_tree().create_timer(0.5).timeout
+	currentAnimation = "idles_" + lastPressed
