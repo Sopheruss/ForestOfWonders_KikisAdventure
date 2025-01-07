@@ -113,6 +113,5 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="PauseMenu" parent="." instance=ExtResource("2_xp36h")]
-visible = false
 
 [connection signal="pressed" from="PauseButton" to="." method="_on_pause_button_pressed"]

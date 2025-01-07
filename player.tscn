@@ -331,8 +331,27 @@ script = ExtResource("1_ra6gl")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_xpgxy")
-animation = &"poof"
+animation = &"idles_front"
 offset = Vector2(0, -31)
+
+[node name="EnergyLowLabel" type="Label" parent="."]
+z_index = 20
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -24.0
+offset_top = -31.0
+offset_right = 960.0
+offset_bottom = 174.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.05, 0.05)
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 150
+text = "Energy is low!
+"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -2)

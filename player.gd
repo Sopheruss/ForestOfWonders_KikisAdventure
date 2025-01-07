@@ -99,12 +99,15 @@ func playFaintAnim():
 
 func speedDependingOnEnergy():
 	if currentEnergy <= 10: # if Energy is <= 10 speed is reduced!
+		$EnergyLowLabel.show() # shows warning label of low energy
 		speed = 50
 	else:
+		$EnergyLowLabel.hide() # hides low energy label
 		speed = 100
 
 func _on_add_1_energy_every_x_sec_timeout() -> void:
 	if currentEnergy <= 0: 
+		$EnergyLowLabel.hide() # hides label if unconcius 
 		await get_tree().create_timer(5.0).timeout
 		currentEnergy += 1
 	else:
