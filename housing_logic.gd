@@ -1,4 +1,4 @@
-extends Node2D
+extends StaticBody2D
 
 @export var tent: Texture
 @export var house: Texture
@@ -9,7 +9,7 @@ extends Node2D
 @export var tree_lightgreen: Texture
 @export var tree_orange: Texture
 
-@onready var currentHousing = $HouseOrTent
+@onready var housing = $Texture
 @onready var is_ready_to_build_house = false
 
 @onready var requirements = {}
@@ -34,7 +34,7 @@ func check_requests(inventory: Array):
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	currentHousing.texture = tent
+	housing.texture = tent
 	
 	slots = [
 		$Speechbubble/Conditions/Condition0,
@@ -60,4 +60,4 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if(is_ready_to_build_house):
-		currentHousing.texture = house
+		housing.texture = house
