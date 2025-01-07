@@ -351,3 +351,9 @@ stream = ExtResource("3_kaph4")
 volume_db = -20.0
 pitch_scale = 0.7
 parameters/looping = true
+
+[node name="Add1EnergyEveryXSec" type="Timer" parent="."]
+autostart = true
+
+[connection signal="animation_looped" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_looped"]
+[connection signal="timeout" from="Add1EnergyEveryXSec" to="." method="_on_add_1_energy_every_x_sec_timeout"]

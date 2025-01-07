@@ -8,7 +8,7 @@ extends StaticBody2D
 @onready var inventory_bar = get_tree().root.get_node("game").get_node("HUD").get_node("InventoryBar")
 @onready var energy_bar = get_tree().root.get_node("game").get_node("HUD").get_node("EnergyBar")
 
-var tree_energy_usage = 50
+var tree_energy_usage = -50
 
 func _ready() -> void:
 	interaction_area.interact = Callable(self, "_sample_Tree")  # Register the interact callback

@@ -1,19 +1,39 @@
 extends CharacterBody2D
 
-signal energyChanged # to signal change for EnergyBar
+## Energy Conditions: 
+## 
+## Speed is Depending on Energy
+##		if Energy is below 10 speed is 50% reduced
+## if Energy is 0 
+##		movement stops
+##		TODO: Interaction denied 
+##		player poofs and faints (TODO: until energy is above 5)
+## On interaction: 
+##		Energy is reduced (in each item interaction)
+##		stone and tree: -10 Energy
+##		special item: -5 Energy
+## Every 1 second player gets back 1 Energy (clamped to maxEnergy)
 
-@export var maxHealth = 100 # defines maxHealth shown in EnergyBar
-@onready var currentHealth: int = maxHealth # currentHealth starts same as maxHealth 
-@onready var energyBar = get_tree().root.get_node("game").get_node("HUD").get_node("EnergyBar")
+signal energyChanged # to signal change for EnergyBar
+signal animation_looped
+
+@export var maxEnergy = 100 # defines maxHealth shown in EnergyBar
+@onready var currentEnergy: int = maxEnergy # currentHealth starts same as maxHealth 
 
 @export var speed = 100
 @onready var audio_player = $AudioStreamPlayer
+
+@onready var regainEnergyTimer = $Add1EnergyEveryXSec
+
 var screen_size
 var is_moving = false # Tracks if the player is currently moving
-var poof_played = false
+var poof_played = false # Tracks if poof was played after 0 energy
 
-func setCurrentHealth(value: int):
-	currentHealth = value
+func setCurrentEnergy(value: int):
+	currentEnergy = value
+
+func getCurrentEnergy():
+	return currentEnergy
 
 func _ready():
 	screen_size = get_viewport_rect().size
@@ -21,15 +41,16 @@ func _ready():
 func _process(delta):
 	energyChanged.emit() # emits signal to energyBar if energy changed -> calls update
 	
-	if currentHealth <= 0: # check if energy is empty
-		
-		$AnimatedSprite2D.play("fainted")
-		return # stops movement and animation if energy is empty
+	if currentEnergy <= 0: # check if energy is empty
+		playPoofAndFaintAnim()
+		return # stops movement and walk/idle animation if energy is empty
 	
-	movement(delta)
+	speedDependingOnEnergy()
+	
+	movement(delta, speed) # handles movement (outsourced in method for better readability of process)
 
 
-func movement(delta):
+func movement(delta, speed):
 	var velocity = Vector2.ZERO # The player's movement vector.
 	
 	# Movement logic
@@ -70,3 +91,36 @@ func movement(delta):
 	
 	position += velocity * delta
 	velocity = move_and_slide()
+
+
+func playPoofAndFaintAnim():
+	# after poof animation played, signal is emitted 
+	# signal executes function _on_animated_sprite_2d_animation_finished()
+	# changes poof played to true 
+	# and faint animation starts playing
+	
+	if poof_played == false:
+		$AnimatedSprite2D.play("poof")
+		emit_signal("animation_finished", "poof")
+	else:
+		$AnimatedSprite2D.play("fainted")
+
+
+func speedDependingOnEnergy():
+	if currentEnergy <= 10: # if Energy is <= 10 speed is reduced!
+		speed = 50
+	else:
+		speed = 100
+
+func _on_add_1_energy_every_x_sec_timeout() -> void:
+	if currentEnergy <= 0: 
+		await get_tree().create_timer(5.0).timeout
+		poof_played = false
+		
+	currentEnergy += 1
+	currentEnergy = clamp(currentEnergy, 0, maxEnergy) # value clamped so that it does not go beyond 100
+
+
+func _on_animated_sprite_2d_animation_looped() -> void:
+	print("poof looped")
+	poof_played = true

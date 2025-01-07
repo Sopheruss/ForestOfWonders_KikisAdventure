@@ -1,22 +1,24 @@
 extends TextureProgressBar
 
 @onready var player = get_tree().root.get_node("game").get_node("Player")
-@onready var currentHealth = player.currentHealth
-var changeHealth = currentHealth
+@onready var currentEnergy:int = player.maxEnergy
 
 func _ready():
 	# connected to player script so that update is called every time there is an Energy Change
 	player.energyChanged.connect(update)
 
+func _process(delta: float) -> void:
+	currentEnergy = player.getCurrentEnergy()
+	update()
+	
 func update(): 
-	# value is shown as percentage of maxHealth
-	value = player.currentHealth * 100 / player.maxHealth
+	# value is shown as percentage of maxEnergy
+	value = player.getCurrentEnergy() * 100 / player.maxEnergy
 
 # to change Energy method handleEnergyChange needs to be called by item that changes energy
-# e.g. in special_item -> if it is picked up, energy changes 
+# e.g. in special_item -> if it is picked up, energy changes by -5 
 func handleEnergyChange(changeEnergy):
-	if currentHealth <= 0: # does not change Energy further if health is 0
-		return 
+	currentEnergy += changeEnergy # adds the amount of energy (set in each item)
+	currentEnergy = clamp(currentEnergy, 0, player.maxEnergy) # clamps value, so it doesn go beyond 100
 	
-	currentHealth -= changeEnergy # subtracts the amount of energy (set in each item)
-	player.setCurrentHealth(currentHealth) # sets current health in player
+	player.setCurrentEnergy(currentEnergy) # sets current Energy in player
