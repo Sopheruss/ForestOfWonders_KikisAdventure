@@ -19,4 +19,4 @@ func _sample_Special():
 	audio_player.play()
 	interaction_area.queue_free()  # Optionally remove the interaction area
 	inventory_bar.add_item(sprite.texture)
-	energy_bar.handleEnergyChange(special_item_energy_usage)
+	energy_bar.handleEnergyChange(special_item_energy_usage) # removes 5 energy
