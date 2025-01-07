@@ -2,6 +2,7 @@ extends TextureProgressBar
 
 @onready var player = get_tree().root.get_node("game").get_node("Player")
 @onready var currentEnergy:int = player.maxEnergy
+@onready var label = get_tree().root.get_node("game").get_node("HUD").get_node("NumEnergy")
 
 func _ready():
 	# connected to player script so that update is called every time there is an Energy Change

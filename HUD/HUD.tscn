@@ -18,10 +18,16 @@ script/source = "extends CanvasLayer
 func _process(delta: float) -> void:
 	if $PauseMenu.get_tree().paused == false: 
 		$PauseMenu.hide()
+		
+	updateLable()
 
 # starts Animation of PauseMenu (see AnimationPlayer/Script in PauseMenu) 
 func _on_pause_button_pressed() -> void:
 	$PauseMenu.pause()
+
+func updateLable():
+	#$EnergyLabel.text = str($EnergyBar.currentEnergy + \"test\") + \"/\" + str($EnergyBar.max_value)
+	$EnergyLabel.text = str($EnergyBar.currentEnergy) + \"/\" + str($EnergyBar.max_value)
 "
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0pxtk"]
@@ -60,6 +66,24 @@ texture_under = ExtResource("3_6pl56")
 texture_progress = ExtResource("4_c2o2o")
 script = ExtResource("5_ohg2r")
 
+[node name="EnergyLabel" type="Label" parent="."]
+z_index = 20
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1180.0
+offset_top = 40.0
+offset_right = 507.0
+offset_bottom = -475.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.15, 0.15)
+theme_override_font_sizes/font_size = 150
+text = "100/100
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="InventoryBar" type="HBoxContainer" parent="."]
 anchors_preset = 7
 anchor_left = 0.5
@@ -89,5 +113,6 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="PauseMenu" parent="." instance=ExtResource("2_xp36h")]
+visible = false
 
 [connection signal="pressed" from="PauseButton" to="." method="_on_pause_button_pressed"]
