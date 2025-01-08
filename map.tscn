@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=4 uid="uid://j8nrx6qou55l"]
+[gd_scene load_steps=59 format=4 uid="uid://j8nrx6qou55l"]
 
 [ext_resource type="Texture2D" uid="uid://bqg5c03odw7wj" path="res://asset/water.PNG" id="1_3bp8d"]
 [ext_resource type="Texture2D" uid="uid://bw8ska4b7reqe" path="res://asset/fullAssPack/Tileset/Dirt - simplified.png" id="1_bcefj"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://snr4w7dpfra7" path="res://interactable_map/stonge_large.tscn" id="12_obg7j"]
 [ext_resource type="PackedScene" uid="uid://b1i6pxhkye86b" path="res://interaction/interaction_area/interaction_area.tscn" id="14_ohrfu"]
 [ext_resource type="PackedScene" uid="uid://ynt855jyl43d" path="res://interactable_map/special_item.tscn" id="15_ie1vb"]
+[ext_resource type="PackedScene" uid="uid://mqbjh652kna" path="res://gamingLogic/housing.tscn" id="20_3n50i"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_xyrav"]
 tile_data = PackedInt32Array(0, 262146, 1, 65536, 262146, 2, 131072, 2, 2, 196608, 2, 3)
@@ -732,6 +733,7 @@ tile_map_data = PackedByteArray("AADg//v/AAACAAcAAADg//z/AAACAAgAAADh//v/AAADAAc
 tile_set = SubResource("TileSet_0l1qp")
 
 [node name="Campfire" type="StaticBody2D" parent="."]
+z_index = 1
 collision_layer = 6
 collision_mask = 5
 script = ExtResource("12_logfa")
@@ -754,3 +756,6 @@ collision_layer = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Campfire/InteractionArea"]
 position = Vector2(-1, 25)
 shape = SubResource("CircleShape2D_8h8np")
+
+[node name="Housing" parent="." instance=ExtResource("20_3n50i")]
+z_index = 1
