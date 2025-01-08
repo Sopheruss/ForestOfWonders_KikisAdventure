@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://mqbjh652kna"]
+[gd_scene load_steps=24 format=3 uid="uid://mqbjh652kna"]
 
 [ext_resource type="Script" path="res://housing_logic.gd" id="1_cdgqb"]
 [ext_resource type="Texture2D" uid="uid://b7yosfcox787d" path="res://asset/HouseTent.png" id="2_husr2"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cxk4x4ps7uaji" path="res://gamingLogic/resources/tree_orange.tres" id="7_wp5pi"]
 [ext_resource type="PackedScene" uid="uid://bx78aisbh68yu" path="res://condition.tscn" id="7_y8m2m"]
 [ext_resource type="Theme" uid="uid://djsqsbsh60m2r" path="res://MenuStuff/game_ui_theme.tres" id="10_7scxa"]
+[ext_resource type="Texture2D" uid="uid://vfd860oxfmwh" path="res://asset/KikiWithShadows.png" id="11_w7iev"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jvdew"]
 atlas = ExtResource("2_husr2")
@@ -33,6 +34,56 @@ region = Rect2(162.611, 177.783, 91.2444, 27.3779)
 [sub_resource type="LabelSettings" id="LabelSettings_vk61i"]
 font_size = 20
 font_color = Color(0.298039, 0.054902, 0.309804, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oxhea"]
+atlas = ExtResource("11_w7iev")
+region = Rect2(128, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ws2no"]
+atlas = ExtResource("11_w7iev")
+region = Rect2(192, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n3hil"]
+atlas = ExtResource("11_w7iev")
+region = Rect2(256, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yufxu"]
+atlas = ExtResource("11_w7iev")
+region = Rect2(320, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3o7fp"]
+atlas = ExtResource("11_w7iev")
+region = Rect2(0, 384, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o2ia0"]
+atlas = ExtResource("11_w7iev")
+region = Rect2(64, 384, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x7or2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oxhea")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ws2no")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n3hil")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yufxu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3o7fp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o2ia0")
+}],
+"loop": false,
+"name": &"pouf",
+"speed": 5.0
+}]
 
 [node name="Housing" type="StaticBody2D"]
 y_sort_enabled = true
@@ -127,5 +178,11 @@ tooltip_text = "Click to upgrade"
 theme = ExtResource("10_7scxa")
 theme_type_variation = &"GameMenuButton"
 text = "Upgrade"
+
+[node name="PoufAnimation" type="AnimatedSprite2D" parent="."]
+visible = false
+z_index = 2
+sprite_frames = SubResource("SpriteFrames_x7or2")
+animation = &"pouf"
 
 [connection signal="pressed" from="Upgrade" to="." method="_on_upgrade_pressed"]

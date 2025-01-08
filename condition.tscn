@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bx78aisbh68yu"]
+[gd_scene load_steps=6 format=3 uid="uid://bx78aisbh68yu"]
 
 [ext_resource type="Script" path="res://condition.gd" id="1_2hxgc"]
+[ext_resource type="Texture2D" uid="uid://cqlfj3y1xfrn2" path="res://asset/UI/basic_ui.png" id="2_2l3ht"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o42bj"]
 bg_color = Color(0.632617, 0.249534, 0.172155, 0.666667)
@@ -10,6 +11,10 @@ corner_radius_top_right = 10
 [sub_resource type="LabelSettings" id="LabelSettings_c31sd"]
 font_size = 30
 font_color = Color(0.124033, 0.226681, 0.132569, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mhkal"]
+atlas = ExtResource("2_2l3ht")
+region = Rect2(242, 67, 12, 11)
 
 [node name="Condition" type="Panel"]
 custom_minimum_size = Vector2(40, 40)
@@ -38,3 +43,12 @@ offset_bottom = 31.0
 scale = Vector2(0.75, 0.75)
 expand_mode = 1
 stretch_mode = 3
+
+[node name="Check" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 3.0
+offset_top = 11.0
+offset_right = 22.0
+offset_bottom = 30.0
+texture = SubResource("AtlasTexture_mhkal")

@@ -7,7 +7,16 @@ var item_count: int = 0
 func update_item(texture: Texture, count: int):
 	item_texture = texture
 	item_count = count
-	
+
+func get_texture():
+	return item_texture
+
+func get_count():
+	return item_count
+
+func set_check():
+	$Count.visible = false
+	$Check.visible = true
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if (item_count > 0):
