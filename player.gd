@@ -21,6 +21,7 @@ signal energyChanged # to signal change for EnergyBar
 
 @export var speed = 100
 @onready var audio_player = $AudioStreamPlayer
+@onready var audio_player2 = $AudioStreamPlayer2 # Reference to audio stream (snoring)
 
 @onready var currentAnimation = "idles_down"
 @onready var lastPressed: String
@@ -116,7 +117,11 @@ func speedDependingOnEnergy():
 func _on_add_1_energy_every_x_sec_timeout() -> void:
 	if currentEnergy <= 0: 
 		$EnergyLowLabel.hide() # hides label if unconcius 
+		if not audio_player2.is_playing():
+			audio_player2.play()
+			
 		await get_tree().create_timer(5.0).timeout
+		audio_player2.stop()
 		currentEnergy += 1
 	else:
 		currentEnergy += 1
