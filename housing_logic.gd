@@ -82,7 +82,8 @@ func _on_upgrade_pressed() -> void:
 	is_ready_to_build_house = false
 	$Upgrade.visible = false
 	$PoufAnimation.visible = false
+	await get_tree().create_timer(2.0).timeout
 	YouDidIt.show()
-	await get_tree().create_timer(1.5).timeout
+	await get_tree().create_timer(2.5).timeout
 	YouDidIt.hide()
 	
