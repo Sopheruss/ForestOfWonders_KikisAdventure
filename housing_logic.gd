@@ -70,6 +70,10 @@ func _process(delta: float) -> void:
 
 
 func _on_upgrade_pressed() -> void:
+	$PoufAnimation.visible = true
+	$PoufAnimation.play("pouf")
+	await get_tree().create_timer(0.8).timeout
 	housing.texture = house
 	is_ready_to_build_house = false
 	$Upgrade.visible = false
+	$PoufAnimation.visible = false
