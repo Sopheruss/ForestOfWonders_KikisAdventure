@@ -17,22 +17,23 @@ extends StaticBody2D
 
 
 func check_requests(inventory: Array):
-	for requiremnet in requirements:
-		for item in inventory:
-			#means not all items are filled, so skip
-			if(item.get_itemTexture() == null):
-				return
-			#find matching texture
-			if(item.get_itemTexture() == requiremnet):
-				#compares count
-				if(item.get_count() >= requirements[requiremnet]):
-					continue
-				#no need to look further at this point
-				else:
-					return
-	if(housing.texture == tent):
-		is_ready_to_build_house = true
+		is_ready_to_build_house = get_state(inventory)
 
+func get_state(inventory: Array):
+	var i = 0
+	for item in inventory:
+		if(item.get_itemTexture() == null):
+				return false
+		for slot in slots:
+			#find matching texture
+			if(item.get_itemTexture() == slot.get_texture()):
+				#compares count
+				if(item.get_count() >= slot.get_count()):
+					slot.set_check()
+					i+=1
+	if (i == inventory.size()):
+		return true
+	return false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	housing.texture = tent
