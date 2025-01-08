@@ -66,6 +66,11 @@ layout_mode = 2
 text = "\"New Thing Get!\" by congusbongus (opengameart.org)"
 horizontal_alignment = 1
 
+[node name="Snoring" type="Label" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "\"Snoring\" by GeriArt (pixabay.com)"
+horizontal_alignment = 1
+
 [node name="-Assets-" type="Label" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
 text = "Assets:
