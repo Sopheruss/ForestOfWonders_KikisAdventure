@@ -1,10 +1,11 @@
-[gd_scene load_steps=42 format=3 uid="uid://cwhngeb8vo338"]
+[gd_scene load_steps=43 format=3 uid="uid://cwhngeb8vo338"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_ra6gl"]
 [ext_resource type="Texture2D" uid="uid://vfd860oxfmwh" path="res://asset/KikiWithShadows.png" id="2_x4pc7"]
 [ext_resource type="Texture2D" uid="uid://gtii7iuk0kva" path="res://asset/Idles_side.png" id="3_e2dw5"]
 [ext_resource type="AudioStream" uid="uid://c78r4iktmj455" path="res://asset/sounds/footsteps.ogg" id="3_kaph4"]
 [ext_resource type="Texture2D" uid="uid://cq5o1odnh5vk0" path="res://asset/Idle_up.png" id="4_1d823"]
+[ext_resource type="AudioStream" uid="uid://fodfxrmjf3n1" path="res://asset/sounds/snoring.ogg" id="5_hsuhb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_frpcp"]
 atlas = ExtResource("2_x4pc7")
@@ -350,6 +351,12 @@ limit_top = 18
 limit_right = 1343
 limit_bottom = 1260
 editor_draw_limits = true
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_hsuhb")
+volume_db = -3.562
+pitch_scale = 1.5
+parameters/looping = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_kaph4")
