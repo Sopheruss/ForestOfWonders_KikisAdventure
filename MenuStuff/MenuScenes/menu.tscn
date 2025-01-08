@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://xynwtmd6feox"]
+[gd_scene load_steps=5 format=3 uid="uid://xynwtmd6feox"]
 
 [ext_resource type="Theme" uid="uid://djsqsbsh60m2r" path="res://MenuStuff/game_ui_theme.tres" id="1_iqf1g"]
 [ext_resource type="Script" path="res://MenuStuff/MenuScripts/menu.gd" id="1_jm48f"]
+[ext_resource type="Texture2D" uid="uid://b7vfmyx6mom6a" path="res://asset/background.png" id="3_v55hb"]
+[ext_resource type="FontFile" uid="uid://c62ux4e1becpy" path="res://asset/Font/Modak-Regular.ttf" id="3_xk6kt"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -14,35 +16,23 @@ theme = ExtResource("1_iqf1g")
 theme_type_variation = &"DarkWoodPanel"
 script = ExtResource("1_jm48f")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.869113, 0.797257, 0.97142, 1)
-
-[node name="Background" type="TextureRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="background" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -16.0
+offset_top = -34.0
+offset_right = 1291.0
+offset_bottom = 749.0
+texture = ExtResource("3_v55hb")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
+anchors_preset = 4
 anchor_top = 0.5
-anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -125.0
+offset_left = 50.0
 offset_top = -90.0
-offset_right = 125.0
+offset_right = 300.0
 offset_bottom = 90.0
-grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_iqf1g")
 theme_type_variation = &"PauseMenuBackground"
@@ -59,34 +49,40 @@ size_flags_vertical = 4
 custom_minimum_size = Vector2(100, 29)
 layout_mode = 2
 theme_type_variation = &"GameMenuButton"
+theme_override_colors/font_color = Color(0.298039, 0.054902, 0.309804, 1)
 text = "Start"
 
 [node name="Credits" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(100, 29)
 layout_mode = 2
 theme_type_variation = &"GameMenuButton"
+theme_override_colors/font_color = Color(0.298039, 0.054902, 0.309804, 1)
 text = "Credits"
 
 [node name="Quit" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(100, 29)
 layout_mode = 2
 theme_type_variation = &"GameMenuButton"
+theme_override_colors/font_color = Color(0.298039, 0.054902, 0.309804, 1)
 text = "Quit"
 
-[node name="Label" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -514.0
-offset_top = 108.0
-offset_right = 1549.0
-offset_bottom = 273.0
-grow_horizontal = 2
-scale = Vector2(0.5, 0.5)
-theme_override_colors/font_color = Color(0.297007, 0.0534051, 0.30983, 1)
-theme_override_font_sizes/font_size = 120
-text = "Forest of Wonders: Kiki's Adventure"
+[node name="GameName" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_left = 379.0
+offset_top = 208.0
+offset_right = 1231.0
+offset_bottom = 512.0
+theme = ExtResource("1_iqf1g")
+theme_type_variation = &"PauseMenuBackground"
+
+[node name="Label" type="Label" parent="GameName"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.388235, 0.0705882, 0.403922, 1)
+theme_override_colors/font_shadow_color = Color(0.840314, 0.57039, 0.863358, 1)
+theme_override_fonts/font = ExtResource("3_xk6kt")
+theme_override_font_sizes/font_size = 85
+text = "Forest of Wonders: 
+Kiki's Adventure"
 horizontal_alignment = 1
 
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/Start" to="." method="_on_play_pressed"]

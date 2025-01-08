@@ -179,12 +179,14 @@ layout_mode = 2
 custom_minimum_size = Vector2(100, 29)
 layout_mode = 2
 theme_type_variation = &"GameMenuButton"
+theme_override_colors/font_color = Color(0.298039, 0.054902, 0.309804, 1)
 text = "Resume"
 
 [node name="MuteButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("3_7ccmb")
 theme_type_variation = &"GameMenuButton"
+theme_override_colors/font_color = Color(0.298039, 0.054902, 0.309804, 1)
 text = "Sound: ON"
 icon_alignment = 1
 expand_icon = true
@@ -193,6 +195,7 @@ expand_icon = true
 custom_minimum_size = Vector2(100, 29)
 layout_mode = 2
 theme_type_variation = &"GameMenuButton"
+theme_override_colors/font_color = Color(0.298039, 0.054902, 0.309804, 1)
 text = "Quit"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
