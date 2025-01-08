@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://cwhngeb8vo338"]
+[gd_scene load_steps=42 format=3 uid="uid://cwhngeb8vo338"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_ra6gl"]
 [ext_resource type="Texture2D" uid="uid://vfd860oxfmwh" path="res://asset/KikiWithShadows.png" id="2_x4pc7"]
