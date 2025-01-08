@@ -30,6 +30,7 @@ func get_state(inventory: Array):
 				#compares count
 				if(item.get_count() >= slot.get_count()):
 					slot.set_check()
+					item.change_texture()
 					i+=1
 	if (i == inventory.size()):
 		return true

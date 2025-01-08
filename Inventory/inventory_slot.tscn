@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://cjdh5no202u2h"]
+[gd_scene load_steps=6 format=3 uid="uid://cjdh5no202u2h"]
 
 [ext_resource type="Texture2D" uid="uid://cqlfj3y1xfrn2" path="res://asset/UI/basic_ui.png" id="1_lsxam"]
 [ext_resource type="Script" path="res://Inventory/inventory_slot.gd" id="2_st6dp"]
@@ -6,6 +6,10 @@
 [sub_resource type="AtlasTexture" id="AtlasTexture_jvrsx"]
 atlas = ExtResource("1_lsxam")
 region = Rect2(11, 155, 26, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_67hnh"]
+atlas = ExtResource("1_lsxam")
+region = Rect2(107, 155, 26, 34.3714)
 
 [sub_resource type="LabelSettings" id="LabelSettings_q5wop"]
 font_size = 10
@@ -18,6 +22,7 @@ size_flags_horizontal = 3
 texture = SubResource("AtlasTexture_jvrsx")
 stretch_mode = 1
 script = ExtResource("2_st6dp")
+checkedTexture = SubResource("AtlasTexture_67hnh")
 
 [node name="Anzahl" type="Label" parent="."]
 layout_direction = 1

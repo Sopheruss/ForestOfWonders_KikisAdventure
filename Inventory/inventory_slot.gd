@@ -3,11 +3,16 @@ extends TextureRect
 #Item Data
 var item_texture: Texture = null
 var item_count: int = 0
+@export var checkedTexture: Texture
 
 
 func update_item(texture: Texture, count: int):
 	item_texture = texture
 	item_count = count
+
+func change_texture():
+	if(texture != checkedTexture):
+		texture = checkedTexture
 
 func get_count():
 	return item_count
