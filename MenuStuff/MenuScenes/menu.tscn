@@ -77,8 +77,8 @@ theme_type_variation = &"PauseMenuBackground"
 
 [node name="Label" type="Label" parent="GameName"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.388235, 0.0705882, 0.403922, 1)
-theme_override_colors/font_shadow_color = Color(0.840314, 0.57039, 0.863358, 1)
+theme_override_colors/font_color = Color(0.784314, 0.611765, 0.423529, 1)
+theme_override_colors/font_shadow_color = Color(0.556863, 0.384314, 0.364706, 1)
 theme_override_fonts/font = ExtResource("3_xk6kt")
 theme_override_font_sizes/font_size = 85
 text = "Forest of Wonders: 

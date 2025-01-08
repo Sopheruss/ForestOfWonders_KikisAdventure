@@ -63,9 +63,9 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if(is_ready_to_build_house):
-		#housing.texture = house
 		if($Speechbubble.visible):
 			$Speechbubble.visible = false
+			$SpeechBubbleCollision.disabled = true
 		if(!$Upgrade.visible):
 			$Upgrade.visible = true
 
