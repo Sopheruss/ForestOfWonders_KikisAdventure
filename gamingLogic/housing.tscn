@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://mqbjh652kna"]
+[gd_scene load_steps=25 format=3 uid="uid://mqbjh652kna"]
 
 [ext_resource type="Script" path="res://housing_logic.gd" id="1_cdgqb"]
 [ext_resource type="Texture2D" uid="uid://b7yosfcox787d" path="res://asset/HouseTent.png" id="2_husr2"]
