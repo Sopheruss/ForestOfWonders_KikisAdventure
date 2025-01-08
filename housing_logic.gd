@@ -30,7 +30,8 @@ func check_requests(inventory: Array):
 				#no need to look further at this point
 				else:
 					return
-	is_ready_to_build_house = true
+	if(housing.texture == tent):
+		is_ready_to_build_house = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -60,4 +61,14 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if(is_ready_to_build_house):
-		housing.texture = house
+		#housing.texture = house
+		if($Speechbubble.visible):
+			$Speechbubble.visible = false
+		if(!$Upgrade.visible):
+			$Upgrade.visible = true
+
+
+func _on_upgrade_pressed() -> void:
+	housing.texture = house
+	is_ready_to_build_house = false
+	$Upgrade.visible = false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://mqbjh652kna"]
+[gd_scene load_steps=16 format=3 uid="uid://mqbjh652kna"]
 
 [ext_resource type="Script" path="res://housing_logic.gd" id="1_cdgqb"]
 [ext_resource type="Texture2D" uid="uid://b7yosfcox787d" path="res://asset/HouseTent.png" id="2_husr2"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dwunfkkmn0la2" path="res://gamingLogic/resources/tree_lightGreen.tres" id="6_bclhd"]
 [ext_resource type="Texture2D" uid="uid://cxk4x4ps7uaji" path="res://gamingLogic/resources/tree_orange.tres" id="7_wp5pi"]
 [ext_resource type="PackedScene" uid="uid://bx78aisbh68yu" path="res://condition.tscn" id="7_y8m2m"]
+[ext_resource type="Theme" uid="uid://djsqsbsh60m2r" path="res://MenuStuff/game_ui_theme.tres" id="10_7scxa"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jvdew"]
 atlas = ExtResource("2_husr2")
@@ -102,3 +103,18 @@ layout_mode = 2
 
 [node name="Condition4" parent="Speechbubble/Conditions" instance=ExtResource("7_y8m2m")]
 layout_mode = 2
+
+[node name="Upgrade" type="Button" parent="."]
+visible = false
+custom_minimum_size = Vector2(100, 29)
+offset_left = -15.0
+offset_top = 32.0
+offset_right = 85.0
+offset_bottom = 65.0
+scale = Vector2(0.3, 0.3)
+tooltip_text = "Click to upgrade"
+theme = ExtResource("10_7scxa")
+theme_type_variation = &"GameMenuButton"
+text = "Upgrade"
+
+[connection signal="pressed" from="Upgrade" to="." method="_on_upgrade_pressed"]
