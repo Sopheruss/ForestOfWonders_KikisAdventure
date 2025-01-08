@@ -15,6 +15,8 @@ extends StaticBody2D
 @onready var requirements = {}
 @onready var slots = []
 
+@onready var YouDidIt = get_tree().root.get_node("game").get_node("HUD").get_node("YouDidIt!")
+
 
 func check_requests(inventory: Array):
 		is_ready_to_build_house = get_state(inventory)
@@ -39,6 +41,8 @@ func get_state(inventory: Array):
 func _ready() -> void:
 	housing.texture = tent
 	
+	YouDidIt.hide()
+	
 	slots = [
 		$Speechbubble/Conditions/Condition0,
 		$Speechbubble/Conditions/Condition1,
@@ -47,11 +51,11 @@ func _ready() -> void:
 		$Speechbubble/Conditions/Condition4
 		]
 	requirements = {
-		special_item: 4,
-		stone: 20,
-		tree_bluegreen: 20,
-		tree_lightgreen: 20,
-		tree_orange: 20
+		special_item: 1,
+		stone: 1,
+		tree_bluegreen: 1,
+		tree_lightgreen: 1,
+		tree_orange: 1
 	}
 	var i = 0
 	for requirement in requirements:
@@ -78,3 +82,7 @@ func _on_upgrade_pressed() -> void:
 	is_ready_to_build_house = false
 	$Upgrade.visible = false
 	$PoufAnimation.visible = false
+	YouDidIt.show()
+	await get_tree().create_timer(1.5).timeout
+	YouDidIt.hide()
+	

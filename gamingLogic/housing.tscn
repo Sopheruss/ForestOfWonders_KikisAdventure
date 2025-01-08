@@ -108,7 +108,7 @@ offset = Vector2(0, -30)
 position = Vector2(0, 18)
 shape = SubResource("RectangleShape2D_7nndd")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+[node name="SpeechBubbleCollision" type="CollisionShape2D" parent="."]
 position = Vector2(94.5, -3.5)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_kmiu4")
