@@ -1,10 +1,19 @@
-[gd_scene load_steps=40 format=3 uid="uid://cwhngeb8vo338"]
+[gd_scene load_steps=43 format=3 uid="uid://cwhngeb8vo338"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_ra6gl"]
 [ext_resource type="Texture2D" uid="uid://vfd860oxfmwh" path="res://asset/KikiWithShadows.png" id="2_x4pc7"]
 [ext_resource type="Texture2D" uid="uid://gtii7iuk0kva" path="res://asset/Idles_side.png" id="3_e2dw5"]
 [ext_resource type="AudioStream" uid="uid://c78r4iktmj455" path="res://asset/sounds/footsteps.ogg" id="3_kaph4"]
 [ext_resource type="Texture2D" uid="uid://cq5o1odnh5vk0" path="res://asset/Idle_up.png" id="4_1d823"]
+[ext_resource type="AudioStream" uid="uid://fodfxrmjf3n1" path="res://asset/sounds/snoring.ogg" id="5_hsuhb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_frpcp"]
+atlas = ExtResource("2_x4pc7")
+region = Rect2(128, 384, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2cv88"]
+atlas = ExtResource("2_x4pc7")
+region = Rect2(192, 384, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5ei4g"]
 atlas = ExtResource("2_x4pc7")
@@ -136,6 +145,17 @@ region = Rect2(320, 128, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xpgxy"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_frpcp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2cv88")
+}],
+"loop": true,
+"name": &"fainted",
+"speed": 2.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_5ei4g")
@@ -301,6 +321,25 @@ animation = &"idles_up"
 frame_progress = 0.43643
 offset = Vector2(0, -31)
 
+[node name="EnergyLowLabel" type="Label" parent="."]
+z_index = 20
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -24.0
+offset_top = -31.0
+offset_right = 960.0
+offset_bottom = 174.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.05, 0.05)
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 150
+text = "Energy is low!
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -2)
 shape = SubResource("RectangleShape2D_6qrts")
@@ -313,8 +352,19 @@ limit_right = 1343
 limit_bottom = 1260
 editor_draw_limits = true
 
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_hsuhb")
+volume_db = -3.562
+pitch_scale = 1.5
+parameters/looping = true
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_kaph4")
 volume_db = -20.0
 pitch_scale = 0.7
 parameters/looping = true
+
+[node name="Add1EnergyEveryXSec" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Add1EnergyEveryXSec" to="." method="_on_add_1_energy_every_x_sec_timeout"]

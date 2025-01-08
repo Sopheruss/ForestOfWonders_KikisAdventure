@@ -1,24 +1,59 @@
 extends CharacterBody2D
 
-class_name Player # defines class name, that can be used in other scenes? 
+## Energy Conditions: 
+## Speed is Depending on Energy
+##		if Energy is below 10 speed is 50% reduced
+## if Energy is 0 
+##		movement stops
+##		movement sound stops
+##		TODO: Interaction denied 
+##		player faints, has to wait 5 sec befor moving again
+## On interaction: 
+##		Energy is reduced (in each item interaction)
+##		stone and tree: -10 Energy
+##		special item: -5 Energy
+## Every 1 second player gets back 1 Energy (clamped to maxEnergy)
 
 signal energyChanged # to signal change for EnergyBar
 
-@export var maxHealth = 100 
-@onready var currentHealth: int = maxHealth # currentHealth starts same as maxHealth 
+@export var maxEnergy = 100 # defines maxHealth shown in EnergyBar
+@onready var currentEnergy: int = maxEnergy # currentHealth starts same as maxHealth 
 
 @export var speed = 100
 @onready var audio_player = $AudioStreamPlayer
+@onready var audio_player2 = $AudioStreamPlayer2 # Reference to audio stream (snoring)
+
 @onready var currentAnimation = "idles_down"
 @onready var lastPressed: String
+
+@onready var regainEnergyTimer = $Add1EnergyEveryXSec
+
 var screen_size
 var is_moving = false # Tracks if the player is currently moving
 
+func setCurrentEnergy(value: int):
+	currentEnergy = value
+
+func getCurrentEnergy():
+	return currentEnergy
 
 func _ready():
 	screen_size = get_viewport_rect().size
 
 func _process(delta):
+	energyChanged.emit() # emits signal to energyBar if energy changed -> calls update
+	
+	if currentEnergy <= 0: # check if energy is empty
+		audio_player.stop() #stops footstepsounds, if fainted
+		playFaintAnim()
+		return # stops movement and walk/idle animation if energy is empty
+	
+	speedDependingOnEnergy()
+	
+	movement(delta, speed) # handles movement (outsourced in method for better readability of process)
+
+
+func movement(delta, speed):
 	var velocity = Vector2.ZERO # The player's movement vector.
 	
 	# Movement logic
@@ -65,17 +100,33 @@ func _process(delta):
 	position += velocity * delta
 	velocity = move_and_slide()
 
-func pickUpStuffRemoveEnegry():
-	#TODO: add method when stuff picked up and energy must change
-	# Dont understand where to put funtion and how to connect Function of Player to e.g. Treee
-	
-	currentHealth -= 1 # sets how much energy is used 
-	
-	if currentHealth < 0: # check if energy is empty
-		print("healthEmpty") #TODO: change what happens if Energy is empty
-		
-	energyChanged.emit() # signals progressBar in Main, that Energy changed and percentage must be changed
 
+func playFaintAnim():
+	# faint animation starts playing
+	$AnimatedSprite2D.play("fainted")
+
+
+func speedDependingOnEnergy():
+	if currentEnergy <= 10: # if Energy is <= 10 speed is reduced!
+		$EnergyLowLabel.show() # shows warning label of low energy
+		speed = 50
+	else:
+		$EnergyLowLabel.hide() # hides low energy label
+		speed = 100
+
+func _on_add_1_energy_every_x_sec_timeout() -> void:
+	if currentEnergy <= 0: 
+		$EnergyLowLabel.hide() # hides label if unconcius 
+		if not audio_player2.is_playing():
+			audio_player2.play()
+			
+		await get_tree().create_timer(5.0).timeout
+		audio_player2.stop()
+		currentEnergy += 1
+	else:
+		currentEnergy += 1
+		currentEnergy = clamp(currentEnergy, 0, maxEnergy) # value clamped so that it does not go beyond 100
+		
 func playMagicAnimation():
 	currentAnimation = "magic_" + lastPressed
 	await get_tree().create_timer(0.5).timeout
