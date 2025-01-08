@@ -6,6 +6,7 @@ extends StaticBody2D
 @onready var audio_player = $AudioStreamPlayer # Reference to audio stream
 @onready var inventory_bar = get_tree().root.get_node("game").get_node("HUD").get_node("InventoryBar")
 @onready var energy_bar = get_tree().root.get_node("game").get_node("HUD").get_node("EnergyBar")
+@onready var player = get_tree().root.get_node("game").get_node("Player")
 
 var stone_energy_usage = -10
 
@@ -14,6 +15,7 @@ func _ready() -> void:
 
 func _sample_Stone():
 	audio_player.play()
+	player.playMagicAnimation()
 	sprite.hide()  # Hide the tree's visual sprite
 	collision_shape.disabled = true  # Disable the collision shape
 	interaction_area.queue_free()  # Optionally remove the interaction area

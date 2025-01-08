@@ -8,6 +8,7 @@ extends StaticBody2D
 @onready var energy_bar = get_tree().root.get_node("game").get_node("HUD").get_node("EnergyBar")
 
 var special_item_energy_usage = -5
+@onready var player = get_tree().root.get_node("game").get_node("Player")
 
 func _ready() -> void:
 	interaction_area.interact = Callable(self, "_sample_Special")  # Register the interact callback
@@ -15,6 +16,7 @@ func _ready() -> void:
 
 func _sample_Special():
 	sprite.hide()  # Hide the tree's visual sprite
+	player.playMagicAnimation()
 	collision_shape.disabled = true  # Disable the collision shape
 	audio_player.play()
 	interaction_area.queue_free()  # Optionally remove the interaction area

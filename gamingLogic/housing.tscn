@@ -1,0 +1,104 @@
+[gd_scene load_steps=15 format=3 uid="uid://mqbjh652kna"]
+
+[ext_resource type="Script" path="res://housing_logic.gd" id="1_cdgqb"]
+[ext_resource type="Texture2D" uid="uid://b7yosfcox787d" path="res://asset/HouseTent.png" id="2_husr2"]
+[ext_resource type="Texture2D" uid="uid://1m8eorrhgxqr" path="res://gamingLogic/resources/special_item.tres" id="3_klkcs"]
+[ext_resource type="Texture2D" uid="uid://bpiu3kcrnndep" path="res://gamingLogic/resources/stonge_large.tres" id="4_6yobx"]
+[ext_resource type="Texture2D" uid="uid://b57mjbthtifsb" path="res://gamingLogic/resources/tree_blueGreen.tres" id="5_5ymnx"]
+[ext_resource type="Texture2D" uid="uid://cqlfj3y1xfrn2" path="res://asset/UI/basic_ui.png" id="6_1s2ct"]
+[ext_resource type="Texture2D" uid="uid://dwunfkkmn0la2" path="res://gamingLogic/resources/tree_lightGreen.tres" id="6_bclhd"]
+[ext_resource type="Texture2D" uid="uid://cxk4x4ps7uaji" path="res://gamingLogic/resources/tree_orange.tres" id="7_wp5pi"]
+[ext_resource type="PackedScene" uid="uid://bx78aisbh68yu" path="res://condition.tscn" id="7_y8m2m"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jvdew"]
+atlas = ExtResource("2_husr2")
+region = Rect2(0, 0, 64.3512, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3w55y"]
+atlas = ExtResource("2_husr2")
+region = Rect2(64.0007, 0, 63.9993, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7nndd"]
+size = Vector2(55, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_02mp2"]
+atlas = ExtResource("6_1s2ct")
+region = Rect2(162.611, 177.783, 91.2444, 27.3779)
+
+[sub_resource type="LabelSettings" id="LabelSettings_vk61i"]
+font_size = 20
+font_color = Color(0.112031, 0.264267, 0.248669, 1)
+
+[node name="Housing" type="StaticBody2D"]
+y_sort_enabled = true
+position = Vector2(0, -45)
+collision_layer = 6
+collision_mask = 5
+script = ExtResource("1_cdgqb")
+tent = SubResource("AtlasTexture_jvdew")
+house = SubResource("AtlasTexture_3w55y")
+special_item = ExtResource("3_klkcs")
+stone = ExtResource("4_6yobx")
+tree_bluegreen = ExtResource("5_5ymnx")
+tree_lightgreen = ExtResource("6_bclhd")
+tree_orange = ExtResource("7_wp5pi")
+
+[node name="Texture" type="Sprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(0, 30)
+offset = Vector2(0, -30)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 18)
+shape = SubResource("RectangleShape2D_7nndd")
+
+[node name="Speechbubble" type="TextureRect" parent="."]
+z_index = 100
+offset_left = 50.0
+offset_top = -42.0
+offset_right = 141.0
+offset_bottom = -15.0
+texture = SubResource("AtlasTexture_02mp2")
+stretch_mode = 2
+
+[node name="Label" type="Label" parent="Speechbubble"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 3.0
+offset_right = 85.0
+offset_bottom = 14.0
+scale = Vector2(0.25, 0.25)
+text = "Collect following items:"
+label_settings = SubResource("LabelSettings_vk61i")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Conditions" type="HBoxContainer" parent="Speechbubble"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -32.5
+offset_top = -16.0
+offset_right = 183.5
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.3, 0.3)
+
+[node name="Condition0" parent="Speechbubble/Conditions" instance=ExtResource("7_y8m2m")]
+layout_mode = 2
+
+[node name="Condition1" parent="Speechbubble/Conditions" instance=ExtResource("7_y8m2m")]
+layout_mode = 2
+
+[node name="Condition2" parent="Speechbubble/Conditions" instance=ExtResource("7_y8m2m")]
+layout_mode = 2
+
+[node name="Condition3" parent="Speechbubble/Conditions" instance=ExtResource("7_y8m2m")]
+layout_mode = 2
+
+[node name="Condition4" parent="Speechbubble/Conditions" instance=ExtResource("7_y8m2m")]
+layout_mode = 2

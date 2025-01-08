@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://ya61hyijf3di"]
+[gd_scene load_steps=3 format=3 uid="uid://dvi28sbp6hddb"]
 
-[ext_resource type="Script" path="res://MenuStuff/MenuScripts/options_menu.gd" id="1_fsyf3"]
+[ext_resource type="Script" path="res://MenuStuff/MenuScripts/credits.gd" id="1_eprg1"]
 [ext_resource type="Theme" uid="uid://djsqsbsh60m2r" path="res://MenuStuff/game_ui_theme.tres" id="2_p7883"]
 
 [node name="Credits" type="Control"]
@@ -10,7 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_fsyf3")
+script = ExtResource("1_eprg1")
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 1
@@ -41,12 +41,32 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="ToBeDeleted" type="Label" parent="PanelContainer/VBoxContainer"]
+[node name="-Sounds-" type="Label" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
-text = "Hier bitte Credits eintippeln! Pro Credit eigenes Label bitte!"
+text = "Sounds: "
 horizontal_alignment = 1
 
-[node name="Assets" type="Label" parent="PanelContainer/VBoxContainer"]
+[node name="Footsteps" type="Label" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "\"Footsteps\" by TechspiredMinds (freesounds.org)"
+horizontal_alignment = 1
+
+[node name="Chop" type="Label" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "\"Chop\" by egomassive (freesounds.org)"
+horizontal_alignment = 1
+
+[node name="Breaking Rock" type="Label" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "\"Breaking Rock\" by themightyglider (opengameart.org)"
+horizontal_alignment = 1
+
+[node name="newThingGet" type="Label" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "\"New Thing Get!\" by congusbongus (opengameart.org)"
+horizontal_alignment = 1
+
+[node name="-Assets-" type="Label" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
 text = "Assets:
 "
@@ -54,12 +74,12 @@ horizontal_alignment = 1
 
 [node name="UI_Stuff" type="Label" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
-text = "Cup Nooble (itch.io)"
+text = "UI-Assets by Cup Nooble (itch.io)"
 horizontal_alignment = 1
 
 [node name="MainAssets" type="Label" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
-text = "Hana Caraka (itch.io)"
+text = "Map-Assets by Hana Caraka (itch.io)"
 horizontal_alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
