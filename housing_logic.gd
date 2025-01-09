@@ -57,11 +57,11 @@ func _ready() -> void:
 		$Speechbubble/Conditions/Condition4
 		]
 	requirements = {
-		special_item: 1,
-		stone: 1,
-		tree_bluegreen: 1,
-		tree_lightgreen: 1,
-		tree_orange: 1
+		special_item: 4,
+		stone: 10,
+		tree_bluegreen: 10,
+		tree_lightgreen: 10,
+		tree_orange: 10
 	}
 	var i = 0
 	for requirement in requirements:
