@@ -1,9 +1,12 @@
 extends Control
 
 @onready var muteButton = get_node("PanelContainer/MarginContainer/VBoxContainer/MuteButton")
+@onready var muteMusicButton = get_node("PanelContainer/MarginContainer/VBoxContainer/muteMusic")
 
-var sound = false
-var bus_idx = AudioServer.get_bus_index("Master")
+var soundEffects = false
+var soundMusic = false
+var bus_idx_SoundEffects = AudioServer.get_bus_index("SoundEffects")
+var bus_idx_Music = AudioServer.get_bus_index("Music")
 
 func _ready(): 
 	$AnimationPlayer.play("RESET")
@@ -42,11 +45,22 @@ func _process(_delta):
 
 
 func _on_mute_button_pressed() -> void:
-	if sound:
+	if soundEffects:
 		muteButton.text = "Sound: ON"
-		AudioServer.set_bus_mute(bus_idx, false)
-		sound = false
+		AudioServer.set_bus_mute(bus_idx_SoundEffects, false)
+		soundEffects = false
 	else: 
 		muteButton.text = "Sound: OFF"
-		AudioServer.set_bus_mute(bus_idx, true)
-		sound = true
+		AudioServer.set_bus_mute(bus_idx_SoundEffects, true)
+		soundEffects = true
+
+
+func _on_mute_music_pressed() -> void:
+	if soundMusic:
+		muteMusicButton.text = "Music: ON"
+		AudioServer.set_bus_mute(bus_idx_Music, false)
+		soundMusic = false
+	else: 
+		muteMusicButton.text = "Music: OFF"
+		AudioServer.set_bus_mute(bus_idx_Music, true)
+		soundMusic = true

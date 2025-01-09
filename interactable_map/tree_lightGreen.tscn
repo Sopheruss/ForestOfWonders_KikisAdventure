@@ -25,6 +25,7 @@ position = Vector2(4.7, 14.0198)
 scale = Vector2(1.02727, 0.904651)
 stream = ExtResource("2_oex0d")
 volume_db = -25.0
+bus = &"SoundEffects"
 
 [node name="sprite" type="Sprite2D" parent="sampleTree"]
 position = Vector2(4.7, 14.0198)

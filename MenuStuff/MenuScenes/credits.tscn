@@ -47,10 +47,13 @@ layout_mode = 2
 text = "-- Sounds --"
 horizontal_alignment = 1
 
-[node name="Footsteps" type="Label" parent="PanelContainer/VBoxContainer"]
+[node name="BackgroundMusic" type="Label" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
-text = "\"Footsteps\" by TechspiredMinds (freesounds.org)"
-horizontal_alignment = 1
+text = "\"Cute Background Loop Song Thing\" by Seth_Makes_Sounds (freesounds.org)"
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "\"12_Walking in leaves and grass\" by 16H_Panska_Skerl_Jan (freesound.org)"
 
 [node name="Chop" type="Label" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
@@ -90,7 +93,7 @@ horizontal_alignment = 1
 
 [node name="Font" type="Label" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
-text = "Modak by Ek Type "
+text = "Font Modak by Ek Type "
 horizontal_alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
@@ -101,9 +104,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -42.0
-offset_top = 150.0
+offset_top = 170.0
 offset_right = 42.0
-offset_bottom = 183.0
+offset_bottom = 203.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 4
