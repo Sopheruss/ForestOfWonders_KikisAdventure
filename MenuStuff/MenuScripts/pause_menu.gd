@@ -45,22 +45,20 @@ func _process(_delta):
 
 
 func _on_mute_button_pressed() -> void:
-	if soundEffects:
-		muteButton.text = "Sound: ON"
-		AudioServer.set_bus_mute(bus_idx_SoundEffects, false)
-		soundEffects = false
-	else: 
-		muteButton.text = "Sound: OFF"
-		AudioServer.set_bus_mute(bus_idx_SoundEffects, true)
-		soundEffects = true
+	soundEffects = changeSounds(soundEffects, bus_idx_SoundEffects, muteButton, "Sound")
 
 
 func _on_mute_music_pressed() -> void:
-	if soundMusic:
-		muteMusicButton.text = "Music: ON"
-		AudioServer.set_bus_mute(bus_idx_Music, false)
-		soundMusic = false
+	soundMusic = changeSounds(soundMusic, bus_idx_Music, muteMusicButton, "Music")
+
+func changeSounds(sound:bool, id: int, button: Button, buttonText: String):
+	if sound:
+		button.text = buttonText + ": ON"
+		AudioServer.set_bus_mute(id, false)
+		sound = false
 	else: 
-		muteMusicButton.text = "Music: OFF"
-		AudioServer.set_bus_mute(bus_idx_Music, true)
-		soundMusic = true
+		button.text = buttonText + ": OFF"
+		AudioServer.set_bus_mute(id, true)
+		sound = true
+	
+	return sound
