@@ -114,19 +114,29 @@ func speedDependingOnEnergy():
 		$EnergyLowLabel.hide() # hides low energy label
 		speed = 100
 
+var isTimerActive = false
+
 func _on_add_1_energy_every_x_sec_timeout() -> void:
 	if currentEnergy <= 0: 
-		$EnergyLowLabel.hide() # hides label if unconcius 
-		if not audio_player2.is_playing():
-			audio_player2.play()
+		$EnergyLowLabel.hide() # hides label if unconscious 
+		if not isTimerActive: 
+			isTimerActive = true
+			if not audio_player2.is_playing():
+				audio_player2.play()
 			
-		await get_tree().create_timer(5.0).timeout
-		audio_player2.stop()
-		currentEnergy += 1
+			await get_tree().create_timer(5.0).timeout
+			isTimerActive = false
+			audio_player2.stop() # Check again after the timer
+			
+			if currentEnergy <= 0: 
+				currentEnergy += 1
+		
+		else:
+			pass
 	else:
 		currentEnergy += 1
-		currentEnergy = clamp(currentEnergy, 0, maxEnergy) # value clamped so that it does not go beyond 100
-		
+		currentEnergy = clamp(currentEnergy, 0, maxEnergy) # value clamped so that it does not go beyond maxEnergy
+
 func playMagicAnimation():
 	currentAnimation = "magic_" + lastPressed
 	await get_tree().create_timer(0.5).timeout
