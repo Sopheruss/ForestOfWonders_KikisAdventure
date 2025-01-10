@@ -34,5 +34,8 @@ func _sample_Special():
 	energy_bar.handleEnergyChange(special_item_energy_usage) # removes 5 energy
 	
 	if not playSpecialeffekts:
-		await get_tree().create_timer(5.0).timeout
-		backgroundMusic.play()
+		var timer = get_tree().create_timer(5.0)
+		timer.timeout.connect(_on_timer_timeout)
+
+func _on_timer_timeout() -> void:
+	backgroundMusic.play()
