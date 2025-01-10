@@ -22,8 +22,13 @@ func check_requests(inventory: Array):
 		is_ready_to_build_house = get_state(inventory)
 
 func get_state(inventory: Array):
+	# stays false because house is already changed
+	if (housing.texture == house):
+		return false
+	
 	var i = 0
 	for item in inventory:
+		# stops when the slot is empty
 		if(item.get_itemTexture() == null):
 				return false
 		for slot in slots:
@@ -34,6 +39,7 @@ func get_state(inventory: Array):
 					slot.set_check()
 					item.change_texture()
 					i+=1
+	# so all requirements are matched
 	if (i == inventory.size()):
 		return true
 	return false
@@ -51,11 +57,11 @@ func _ready() -> void:
 		$Speechbubble/Conditions/Condition4
 		]
 	requirements = {
-		special_item: 1,
-		stone: 1,
-		tree_bluegreen: 1,
-		tree_lightgreen: 1,
-		tree_orange: 1
+		special_item: 4,
+		stone: 10,
+		tree_bluegreen: 10,
+		tree_lightgreen: 10,
+		tree_orange: 10
 	}
 	var i = 0
 	for requirement in requirements:

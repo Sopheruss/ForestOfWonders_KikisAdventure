@@ -182,6 +182,15 @@ theme_type_variation = &"GameMenuButton"
 theme_override_colors/font_color = Color(0.298039, 0.054902, 0.309804, 1)
 text = "Resume"
 
+[node name="muteMusic" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_7ccmb")
+theme_type_variation = &"GameMenuButton"
+theme_override_colors/font_color = Color(0.298039, 0.054902, 0.309804, 1)
+text = "Music: ON"
+icon_alignment = 1
+expand_icon = true
+
 [node name="MuteButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("3_7ccmb")
@@ -204,5 +213,6 @@ libraries = {
 }
 
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/muteMusic" to="." method="_on_mute_music_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/MuteButton" to="." method="_on_mute_button_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

@@ -22,7 +22,8 @@ script = ExtResource("1_ukum8")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer2D" parent="sampleSpecial"]
 stream = ExtResource("4_6tvgo")
-volume_db = -15.0
+volume_db = -30.0
+bus = &"SoundEffects"
 
 [node name="sprite" type="Sprite2D" parent="sampleSpecial"]
 position = Vector2(-1.31636, 12.0262)
