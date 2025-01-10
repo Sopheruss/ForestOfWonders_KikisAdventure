@@ -19,6 +19,6 @@ position = Vector2(691, 920)
 
 [node name="backgroundMusik" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_tvkq0")
-volume_db = -15.0
+volume_db = -12.0
 autoplay = true
 bus = &"Music"
