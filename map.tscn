@@ -734,17 +734,20 @@ tile_set = SubResource("TileSet_0l1qp")
 
 [node name="Campfire" type="StaticBody2D" parent="."]
 z_index = 1
+y_sort_enabled = true
 collision_layer = 6
 collision_mask = 5
 script = ExtResource("12_logfa")
 
 [node name="Animation" type="AnimatedSprite2D" parent="Campfire"]
-position = Vector2(0, 16)
+y_sort_enabled = true
+position = Vector2(0, 26)
 scale = Vector2(0.6, 0.6)
 sprite_frames = SubResource("SpriteFrames_1fn06")
 animation = &"campfire"
 frame = 1
 frame_progress = 0.711467
+offset = Vector2(0, -16.6666)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Campfire"]
 position = Vector2(-0.5, 25.5)
