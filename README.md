@@ -5,4 +5,4 @@ Our Game for the modul "Einführung in digitale Spiele" WiSe 24/25, written in G
 Become the little witch Kiki, who has to prove herself to the elder circle of witches. 
 She has to solve the task of crating a little magical hut in a mystical forest. 
 
-Are you ready to help Kiki become a fully grown witch, takling this challenge?
+Are you ready to help Kiki become a fully grown witch, to tackle this challenge?
