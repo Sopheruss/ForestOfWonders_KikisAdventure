@@ -1,4 +1,4 @@
-Our Game for the modul "Einführung in digitale Spiele" WiSe 24/25, written in GDScript with Godot.
+Our Game for the course "Einführung in digitale Spiele" WiSe 24/25, written in GDScript with Godot.
 
 ![grafik](https://github.com/user-attachments/assets/37d4933d-801c-482a-8f49-3f315616589e)
 
